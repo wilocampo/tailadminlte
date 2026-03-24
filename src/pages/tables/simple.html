@@ -7,7 +7,7 @@
   <div class="app-wrapper">
     {{> header/navbar}}
     {{> sidebar/sidebar activePage="tables-simple"}}
-    <main class="app-main">
+    <main class="app-main" role="main">
       {{> content/content-header pageTitle="Simple Tables"}}
       <div class="app-content">
         <div class="w-full px-4">
@@ -110,39 +110,39 @@
             <div class="card">
               <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
               <div class="card-body p-0">
-                <table class="w-full text-sm text-left border dark:border-gray-700">
+                <table class="w-full text-sm text-left border border-gray-300 dark:border-gray-700">
                   <thead class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th class="px-4 py-3 border dark:border-gray-700">#</th>
-                      <th class="px-4 py-3 border dark:border-gray-700">Task</th>
-                      <th class="px-4 py-3 border dark:border-gray-700">Status</th>
-                      <th class="px-4 py-3 border dark:border-gray-700">Due Date</th>
+                      <th class="px-4 py-3 border border-gray-300 dark:border-gray-700">#</th>
+                      <th class="px-4 py-3 border border-gray-300 dark:border-gray-700">Task</th>
+                      <th class="px-4 py-3 border border-gray-300 dark:border-gray-700">Status</th>
+                      <th class="px-4 py-3 border border-gray-300 dark:border-gray-700">Due Date</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="px-4 py-3 border dark:border-gray-700">1</td>
-                      <td class="px-4 py-3 border dark:border-gray-700">Design mockups</td>
-                      <td class="px-4 py-3 border dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">Complete</span></td>
-                      <td class="px-4 py-3 border dark:border-gray-700">2026-03-15</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">1</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">Design mockups</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">Complete</span></td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">2026-03-15</td>
                     </tr>
                     <tr>
-                      <td class="px-4 py-3 border dark:border-gray-700">2</td>
-                      <td class="px-4 py-3 border dark:border-gray-700">Frontend development</td>
-                      <td class="px-4 py-3 border dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">In Progress</span></td>
-                      <td class="px-4 py-3 border dark:border-gray-700">2026-04-01</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">2</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">Frontend development</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">In Progress</span></td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">2026-04-01</td>
                     </tr>
                     <tr>
-                      <td class="px-4 py-3 border dark:border-gray-700">3</td>
-                      <td class="px-4 py-3 border dark:border-gray-700">API integration</td>
-                      <td class="px-4 py-3 border dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">Pending</span></td>
-                      <td class="px-4 py-3 border dark:border-gray-700">2026-04-15</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">3</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">API integration</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">Pending</span></td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">2026-04-15</td>
                     </tr>
                     <tr>
-                      <td class="px-4 py-3 border dark:border-gray-700">4</td>
-                      <td class="px-4 py-3 border dark:border-gray-700">Testing</td>
-                      <td class="px-4 py-3 border dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">Blocked</span></td>
-                      <td class="px-4 py-3 border dark:border-gray-700">2026-04-30</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">4</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">Testing</td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700"><span class="px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">Blocked</span></td>
+                      <td class="px-4 py-3 border border-gray-300 dark:border-gray-700">2026-04-30</td>
                     </tr>
                   </tbody>
                 </table>
@@ -471,7 +471,7 @@
                     <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td class="px-4 py-3">1</td>
                       <td class="px-4 py-3 flex items-center gap-2">
-                        <img src="https://ui-avatars.com/api/?name=JD&background=0d6efd&color=fff&size=32" alt="Avatar" class="w-8 h-8 rounded-full">
+                        <img src="/assets/img/user1-128x128.jpg" alt="John Doe" class="w-8 h-8 rounded-full">
                         <div>
                           <p class="font-medium">John Doe</p>
                           <p class="text-xs text-gray-500 dark:text-gray-400">john@example.com</p>
@@ -490,7 +490,7 @@
                     <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td class="px-4 py-3">2</td>
                       <td class="px-4 py-3 flex items-center gap-2">
-                        <img src="https://ui-avatars.com/api/?name=JS&background=198754&color=fff&size=32" alt="Avatar" class="w-8 h-8 rounded-full">
+                        <img src="/assets/img/user3-128x128.jpg" alt="Jane Smith" class="w-8 h-8 rounded-full">
                         <div>
                           <p class="font-medium">Jane Smith</p>
                           <p class="text-xs text-gray-500 dark:text-gray-400">jane@example.com</p>
@@ -509,7 +509,7 @@
                     <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td class="px-4 py-3">3</td>
                       <td class="px-4 py-3 flex items-center gap-2">
-                        <img src="https://ui-avatars.com/api/?name=BW&background=ffc107&color=212529&size=32" alt="Avatar" class="w-8 h-8 rounded-full">
+                        <img src="/assets/img/user5-128x128.jpg" alt="Bob Wilson" class="w-8 h-8 rounded-full">
                         <div>
                           <p class="font-medium">Bob Wilson</p>
                           <p class="text-xs text-gray-500 dark:text-gray-400">bob@example.com</p>
@@ -528,7 +528,7 @@
                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td class="px-4 py-3">4</td>
                       <td class="px-4 py-3 flex items-center gap-2">
-                        <img src="https://ui-avatars.com/api/?name=AB&background=dc3545&color=fff&size=32" alt="Avatar" class="w-8 h-8 rounded-full">
+                        <img src="/assets/img/user7-128x128.jpg" alt="Alice Brown" class="w-8 h-8 rounded-full">
                         <div>
                           <p class="font-medium">Alice Brown</p>
                           <p class="text-xs text-gray-500 dark:text-gray-400">alice@example.com</p>

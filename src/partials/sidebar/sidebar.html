@@ -47,7 +47,7 @@
         </li>
 
         <!-- Widgets -->
-        <li class="nav-item">
+        <li class="nav-item {{#if (startsWith activePage 'widgets-')}}menu-open{{/if}}">
           <a href="#" class="nav-link">
             <span class="nav-icon"><i data-lucide="puzzle" class="w-5 h-5"></i></span>
             <p>
@@ -55,21 +55,21 @@
               <span class="nav-arrow"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
             </p>
           </a>
-          <ul class="nav-treeview">
+          <ul class="nav-treeview" {{#if (startsWith activePage 'widgets-')}}style="display: block"{{/if}}>
             <li class="nav-item">
-              <a href="/pages/widgets/small-box.html" class="nav-link">
+              <a href="/pages/widgets/small-box.html" class="nav-link {{#if (eq activePage 'widgets-small-box')}}active{{/if}}">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
                 <p>Small Box</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/widgets/info-box.html" class="nav-link">
+              <a href="/pages/widgets/info-box.html" class="nav-link {{#if (eq activePage 'widgets-info-box')}}active{{/if}}">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
                 <p>Info Box</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/widgets/cards.html" class="nav-link">
+              <a href="/pages/widgets/cards.html" class="nav-link {{#if (eq activePage 'widgets-cards')}}active{{/if}}">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
                 <p>Cards</p>
               </a>
@@ -80,7 +80,7 @@
         <!-- LAYOUT OPTIONS -->
         <li class="nav-header">LAYOUT OPTIONS</li>
 
-        <li class="nav-item {{#if (or (eq activePage 'layout-fixed-sidebar') (or (eq activePage 'layout-fixed-header') (or (eq activePage 'layout-fixed-footer') (or (eq activePage 'layout-collapsed-sidebar') (or (eq activePage 'layout-sidebar-mini') (eq activePage 'layout-logo-switch'))))))}}menu-open{{/if}}">
+        <li class="nav-item {{#if (startsWith activePage 'layout-')}}menu-open{{/if}}">
           <a href="#" class="nav-link">
             <span class="nav-icon"><i data-lucide="layout" class="w-5 h-5"></i></span>
             <p>
@@ -88,7 +88,13 @@
               <span class="nav-arrow"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
             </p>
           </a>
-          <ul class="nav-treeview" {{#if (or (eq activePage 'layout-fixed-sidebar') (or (eq activePage 'layout-fixed-header') (or (eq activePage 'layout-fixed-footer') (or (eq activePage 'layout-collapsed-sidebar') (or (eq activePage 'layout-sidebar-mini') (eq activePage 'layout-logo-switch'))))))}}style="display: block"{{/if}}>
+          <ul class="nav-treeview" {{#if (startsWith activePage 'layout-')}}style="display: block"{{/if}}>
+            <li class="nav-item">
+              <a href="/pages/layout/unfixed-sidebar.html" class="nav-link {{#if (eq activePage 'layout-unfixed-sidebar')}}active{{/if}}">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>Default Sidebar</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="/pages/layout/fixed-sidebar.html" class="nav-link {{#if (eq activePage 'layout-fixed-sidebar')}}active{{/if}}">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
@@ -105,6 +111,18 @@
               <a href="/pages/layout/fixed-footer.html" class="nav-link {{#if (eq activePage 'layout-fixed-footer')}}active{{/if}}">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
                 <p>Fixed Footer</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/layout/fixed-complete.html" class="nav-link {{#if (eq activePage 'layout-fixed-complete')}}active{{/if}}">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>Fixed Complete</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/layout/layout-custom-area.html" class="nav-link {{#if (eq activePage 'layout-custom-area')}}active{{/if}}">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>Custom Area</p>
               </a>
             </li>
             <li class="nav-item">
@@ -125,6 +143,12 @@
                 <p>Logo Switch</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="/pages/layout/layout-rtl.html" class="nav-link {{#if (eq activePage 'layout-rtl')}}active{{/if}}">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>RTL Layout</p>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -132,7 +156,7 @@
         <li class="nav-header">COMPONENTS</li>
 
         <!-- UI Elements -->
-        <li class="nav-item {{#if (or (eq activePage 'ui-general') (or (eq activePage 'ui-icons') (or (eq activePage 'ui-buttons') (or (eq activePage 'ui-timeline') (eq activePage 'ui-modals')))))}}menu-open{{/if}}">
+        <li class="nav-item {{#if (startsWith activePage 'ui-')}}menu-open{{/if}}">
           <a href="#" class="nav-link">
             <span class="nav-icon"><i data-lucide="palette" class="w-5 h-5"></i></span>
             <p>
@@ -140,7 +164,7 @@
               <span class="nav-arrow"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
             </p>
           </a>
-          <ul class="nav-treeview" {{#if (or (eq activePage 'ui-general') (or (eq activePage 'ui-icons') (or (eq activePage 'ui-buttons') (or (eq activePage 'ui-timeline') (eq activePage 'ui-modals')))))}}style="display: block"{{/if}}>
+          <ul class="nav-treeview" {{#if (startsWith activePage 'ui-')}}style="display: block"{{/if}}>
             <li class="nav-item">
               <a href="/pages/UI/general.html" class="nav-link {{#if (eq activePage 'ui-general')}}active{{/if}}">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
@@ -253,7 +277,7 @@
         </li>
 
         <!-- Pages -->
-        <li class="nav-item {{#if (or (eq activePage 'examples-profile') (or (eq activePage 'examples-invoice') (or (eq activePage 'examples-gallery') (or (eq activePage 'examples-search') (or (eq activePage 'examples-projects') (or (eq activePage 'examples-contacts') (eq activePage 'examples-ecommerce')))))))}}menu-open{{/if}}">
+        <li class="nav-item {{#if (startsWith activePage 'examples-')}}menu-open{{/if}}">
           <a href="#" class="nav-link">
             <span class="nav-icon"><i data-lucide="book-open" class="w-5 h-5"></i></span>
             <p>
@@ -261,17 +285,35 @@
               <span class="nav-arrow"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
             </p>
           </a>
-          <ul class="nav-treeview" {{#if (or (eq activePage 'examples-profile') (or (eq activePage 'examples-invoice') (or (eq activePage 'examples-gallery') (or (eq activePage 'examples-search') (or (eq activePage 'examples-projects') (or (eq activePage 'examples-contacts') (eq activePage 'examples-ecommerce')))))))}}style="display: block"{{/if}}>
+          <ul class="nav-treeview" {{#if (startsWith activePage 'examples-')}}style="display: block"{{/if}}>
             <li class="nav-item">
               <a href="/pages/examples/login-v1.html" class="nav-link">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
-                <p>Login</p>
+                <p>Login v1</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/examples/login-v2.html" class="nav-link">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>Login v2</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/pages/examples/register-v1.html" class="nav-link">
                 <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
-                <p>Register</p>
+                <p>Register v1</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/examples/register-v2.html" class="nav-link">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>Register v2</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/examples/lockscreen.html" class="nav-link">
+                <span class="nav-icon"><i data-lucide="circle" class="w-3 h-3"></i></span>
+                <p>Lockscreen</p>
               </a>
             </li>
             <li class="nav-item">

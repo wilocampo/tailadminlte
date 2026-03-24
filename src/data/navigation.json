@@ -30,12 +30,16 @@
           "label": "Layout Options",
           "icon": "layout",
           "children": [
+            { "label": "Default Sidebar", "href": "/pages/layout/unfixed-sidebar.html", "activePage": "layout-unfixed-sidebar" },
             { "label": "Fixed Sidebar", "href": "/pages/layout/fixed-sidebar.html", "activePage": "layout-fixed-sidebar" },
             { "label": "Fixed Header", "href": "/pages/layout/fixed-header.html", "activePage": "layout-fixed-header" },
             { "label": "Fixed Footer", "href": "/pages/layout/fixed-footer.html", "activePage": "layout-fixed-footer" },
+            { "label": "Fixed Complete", "href": "/pages/layout/fixed-complete.html", "activePage": "layout-fixed-complete" },
+            { "label": "Custom Area", "href": "/pages/layout/layout-custom-area.html", "activePage": "layout-custom-area" },
             { "label": "Sidebar Mini", "href": "/pages/layout/sidebar-mini.html", "activePage": "layout-sidebar-mini" },
             { "label": "Collapsed Sidebar", "href": "/pages/layout/collapsed-sidebar.html", "activePage": "layout-collapsed-sidebar" },
-            { "label": "Logo Switch", "href": "/pages/layout/logo-switch.html", "activePage": "layout-logo-switch" }
+            { "label": "Logo Switch", "href": "/pages/layout/logo-switch.html", "activePage": "layout-logo-switch" },
+            { "label": "RTL Layout", "href": "/pages/layout/layout-rtl.html", "activePage": "layout-rtl" }
           ]
         }
       ]

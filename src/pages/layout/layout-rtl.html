@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  {{> head title="TailAdminLTE | RTL Layout" pathPrefix="../.."}}
+  <style>
+    /* RTL overrides */
+    [dir="rtl"] .app-wrapper {
+      grid-template-areas:
+        "header sidebar"
+        "main sidebar"
+        "footer sidebar";
+      grid-template-columns: 1fr auto;
+    }
+
+    [dir="rtl"] .app-sidebar {
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: none;
+    }
+
+    [dir="rtl"] .dark .app-sidebar {
+      border-left-color: rgba(255, 255, 255, 0.1);
+    }
+
+    [dir="rtl"] .sidebar-brand .brand-image {
+      margin-left: 0.5rem;
+      margin-right: 0;
+    }
+
+    [dir="rtl"] .nav-icon {
+      margin-left: 0.5rem;
+      margin-right: 0;
+    }
+
+    [dir="rtl"] .nav-arrow {
+      margin-right: auto;
+      margin-left: 0;
+    }
+
+    [dir="rtl"] .nav-arrow i {
+      transform: rotate(180deg);
+    }
+
+    [dir="rtl"] .nav-item.menu-open > a > p > .nav-arrow i {
+      transform: rotate(270deg);
+    }
+
+    [dir="rtl"] .nav-treeview {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    [dir="rtl"] .breadcrumb {
+      direction: ltr;
+    }
+
+    [dir="rtl"] .card-tools {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    [dir="rtl"] .app-content-header .breadcrumb-item + .breadcrumb-item::before {
+      padding: 0 0.5rem;
+    }
+
+    /* Sidebar overlay for RTL */
+    [dir="rtl"] .sidebar-overlay {
+      /* same as LTR, overlay covers full screen */
+    }
+
+    /* Small box icon RTL */
+    [dir="rtl"] .small-box .small-box-icon {
+      right: auto;
+      left: 0.5rem;
+    }
+  </style>
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="layout-rtl"}}
+    <main class="app-main" role="main">
+      {{> content/content-header pageTitle="RTL Layout"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Info Callout -->
+          <div class="callout callout-info">
+            <h5>RTL (Right-to-Left) Layout</h5>
+            <p>This page demonstrates the <strong>RTL layout</strong> for languages like Arabic, Hebrew, Farsi, and Urdu. The sidebar appears on the right, text flows right-to-left, and all UI elements are mirrored.</p>
+            <p class="mt-2">Usage: Add <code>dir="rtl"</code> and <code>lang="ar"</code> to the <code>&lt;html&gt;</code> tag.</p>
+          </div>
+
+          <!-- How It Works -->
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">How to Enable RTL</h3></div>
+            <div class="card-body">
+              <p>To enable RTL layout, two changes are needed:</p>
+              <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm">
+                <li>Set the <code>dir</code> and <code>lang</code> attributes on the <code>&lt;html&gt;</code> element:
+                  <pre class="bg-gray-800 text-green-400 p-3 rounded mt-1 text-sm"><code>&lt;html lang="ar" dir="rtl"&gt;</code></pre>
+                </li>
+                <li>Include the RTL CSS overrides that mirror the grid layout, sidebar position, and icon directions:
+                  <pre class="bg-gray-800 text-green-400 p-3 rounded mt-1 text-sm overflow-x-auto"><code>[dir="rtl"] .app-wrapper {
+  grid-template-areas:
+    "header sidebar"
+    "main sidebar"
+    "footer sidebar";
+  grid-template-columns: 1fr auto;
+}</code></pre>
+                </li>
+              </ol>
+              <p class="mt-3">Tailwind CSS utilities like <code>text-right</code>, <code>ml-*</code>, and <code>pl-*</code> are physical properties. For RTL support, prefer logical properties: <code>ms-*</code> (margin-start), <code>me-*</code> (margin-end), <code>ps-*</code> (padding-start), <code>pe-*</code> (padding-end).</p>
+            </div>
+          </div>
+
+          <!-- RTL Demo Content -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3>150</h3>
+                <p>طلبات جديدة</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="shopping-cart"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                المزيد <i data-lucide="arrow-left" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup class="text-xl">%</sup></h3>
+                <p>معدل الارتداد</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="bar-chart-2"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                المزيد <i data-lucide="arrow-left" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
+                <p>تسجيلات المستخدمين</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="user-plus"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                المزيد <i data-lucide="arrow-left" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+                <p>زوار فريدون</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="pie-chart"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                المزيد <i data-lucide="arrow-left" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Arabic Sample Content -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">محتوى باللغة العربية</h3></div>
+              <div class="card-body">
+                <p>هذا مثال على محتوى باللغة العربية في تخطيط من اليمين إلى اليسار. لاحظ كيف يتدفق النص من اليمين إلى اليسار، والشريط الجانبي على الجانب الأيمن من الصفحة.</p>
+                <p class="mt-2">يدعم TailAdminLTE التخطيط من اليمين إلى اليسار بالكامل مع تعديلات CSS بسيطة.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">English Content</h3></div>
+              <div class="card-body">
+                <p>This is a sample card with English content in the RTL layout. Notice how the overall page structure is mirrored — sidebar on the right, content flowing right-to-left — but the English text within this card still reads left-to-right naturally.</p>
+                <p class="mt-2">Mixed-language content works correctly because browsers handle bidirectional text natively.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Boxes in RTL -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div class="info-box">
+              <span class="info-box-icon bg-primary text-white">
+                <i data-lucide="mail" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">الرسائل</span>
+                <span class="info-box-number">1,410</span>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-success text-white">
+                <i data-lucide="bookmark" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">الإشارات المرجعية</span>
+                <span class="info-box-number">410</span>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-warning text-white">
+                <i data-lucide="upload" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">التحميلات</span>
+                <span class="info-box-number">13,648</span>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-danger text-white">
+                <i data-lucide="thumbs-up" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">الإعجابات</span>
+                <span class="info-box-number">93,139</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

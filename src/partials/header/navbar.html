@@ -34,7 +34,7 @@
 
     <!-- Dark Mode Toggle -->
     <li x-data="{ get mode() { return $store.darkMode.mode } }">
-      <a class="nav-link cursor-pointer" @click="$store.darkMode.toggle()" title="Toggle dark mode">
+      <a class="nav-link cursor-pointer" role="button" tabindex="0" aria-label="Toggle dark mode" @click="$store.darkMode.toggle()" title="Toggle dark mode">
         <i x-show="mode === 'light'" data-lucide="sun" class="w-5 h-5"></i>
         <i x-show="mode === 'dark'" data-lucide="moon" class="w-5 h-5"></i>
         <i x-show="mode === 'auto'" data-lucide="monitor" class="w-5 h-5"></i>
@@ -146,7 +146,7 @@
 
     <!-- Fullscreen Toggle -->
     <li x-data="fullscreen" class="hidden md:block">
-      <a class="nav-link cursor-pointer" @click="toggle()" title="Fullscreen">
+      <a class="nav-link cursor-pointer" role="button" tabindex="0" aria-label="Fullscreen" @click="toggle()" title="Fullscreen">
         <i x-show="!active" data-lucide="maximize" class="w-5 h-5"></i>
         <i x-show="active" data-lucide="minimize" class="w-5 h-5"></i>
       </a>

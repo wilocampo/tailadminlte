@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Default Sidebar" pathPrefix="../.."}}
+</head>
+<body class="sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="layout-unfixed-sidebar"}}
+    <main class="app-main" role="main">
+      {{> content/content-header pageTitle="Default Sidebar"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Info Callout -->
+          <div class="callout callout-info">
+            <h5>Default (Unfixed) Sidebar Layout</h5>
+            <p>This page demonstrates the <strong>default sidebar</strong> layout. The sidebar scrolls along with the page content — it is <strong>not</strong> fixed to the viewport. This is the behavior when the <code>layout-fixed</code> class is <strong>absent</strong> from the body tag.</p>
+            <p class="mt-2">Usage: <code>&lt;body class="sidebar-expand-lg sidebar-mini sidebar-open"&gt;</code></p>
+          </div>
+
+          <!-- Try It Toggle -->
+          <div class="card mb-4" x-data="{ fixed: false }">
+            <div class="card-header"><h3 class="card-title">Try It</h3></div>
+            <div class="card-body">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" x-model="fixed" @change="document.body.classList.toggle('layout-fixed', fixed)" class="accent-primary">
+                <span>Enable Fixed Sidebar (<code>layout-fixed</code>)</span>
+              </label>
+              <p class="text-sm text-gray-500 mt-2">Toggle to compare: when unchecked (default), the sidebar scrolls with the page. When checked, the sidebar becomes fixed.</p>
+            </div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">How It Works</h3></div>
+            <div class="card-body">
+              <p>By default (without the <code>layout-fixed</code> class), the sidebar is part of the normal page flow. As you scroll down, the sidebar scrolls away with the content.</p>
+              <p class="mt-2">This is ideal for shorter sidebar menus or when you want to maximize vertical space for the sidebar content without needing an internal scrollbar.</p>
+              <h5 class="mt-4 font-semibold">Comparison:</h5>
+              <table class="w-full text-sm mt-2">
+                <thead>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th class="text-left py-2 px-3">Feature</th>
+                    <th class="text-left py-2 px-3">Default (Unfixed)</th>
+                    <th class="text-left py-2 px-3">Fixed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                    <td class="py-2 px-3">Body class</td>
+                    <td class="py-2 px-3"><code>—</code> (no class needed)</td>
+                    <td class="py-2 px-3"><code>layout-fixed</code></td>
+                  </tr>
+                  <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                    <td class="py-2 px-3">Sidebar scrolls with page</td>
+                    <td class="py-2 px-3">Yes</td>
+                    <td class="py-2 px-3">No</td>
+                  </tr>
+                  <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                    <td class="py-2 px-3">Sidebar has own scrollbar</td>
+                    <td class="py-2 px-3">No</td>
+                    <td class="py-2 px-3">Yes</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3">Best for</td>
+                    <td class="py-2 px-3">Short menus</td>
+                    <td class="py-2 px-3">Long menus, dashboards</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Filler content for scrolling -->
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Sample Content</h3></div>
+            <div class="card-body">
+              <p>Scroll down to see how the sidebar behaves in the default (unfixed) mode. The sidebar will scroll away as you scroll past it.</p>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">More Content</h3></div>
+            <div class="card-body"><p>This extra content ensures the page is long enough to demonstrate the scrolling behavior. In the default layout, both the sidebar and the main content area scroll together as a single document.</p></div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Even More Content</h3></div>
+            <div class="card-body"><p>Keep scrolling to see the sidebar disappear above the viewport. This is the key difference from the fixed sidebar layout, where the sidebar would remain visible.</p></div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Additional Content</h3></div>
+            <div class="card-body"><p>With enough content on the page, you can clearly see the sidebar scrolling behavior. The sidebar is simply part of the page flow, not locked in place.</p></div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Final Content Block</h3></div>
+            <div class="card-body"><p>You've reached the bottom of the demo content. Scroll back up to find the sidebar, or use the toggle above to switch to a fixed sidebar.</p></div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

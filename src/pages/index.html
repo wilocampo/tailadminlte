@@ -7,7 +7,7 @@
   <div class="app-wrapper">
     {{> header/navbar}}
     {{> sidebar/sidebar activePage="index"}}
-    <main class="app-main">
+    <main class="app-main" role="main">
       {{> content/content-header pageTitle="Dashboard"}}
       <div class="app-content">
         <div class="w-full px-4">
@@ -141,71 +141,84 @@
                 </div>
                 <div class="card-body">
                   <div class="direct-chat-messages">
-                    <!-- Message from other user -->
+                    <!-- Message from other user (left) -->
                     <div class="direct-chat-msg">
-                      <div class="direct-chat-infos">
-                        <span class="direct-chat-name">Alex Johnson</span>
-                        <span class="direct-chat-timestamp">2 hrs ago</span>
-                      </div>
-                      <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=AJ&background=0d6efd&color=fff&size=40" alt="Avatar">
-                      <div class="direct-chat-text">
-                        Hey, did you check the new sales report? Numbers look great this month!
+                      <img class="direct-chat-img" src="/assets/img/user1-128x128.jpg" alt="Avatar">
+                      <div>
+                        <div class="direct-chat-infos">
+                          <span class="direct-chat-name">Alexander Pierce</span>
+                          <span class="direct-chat-timestamp">23 Jan 2:00 pm</span>
+                        </div>
+                        <div class="direct-chat-text">
+                          Is this template really free? That's unbelievable!
+                        </div>
                       </div>
                     </div>
 
-                    <!-- Message from current user -->
+                    <!-- Message from current user (right) -->
                     <div class="direct-chat-msg right">
-                      <div class="direct-chat-infos">
-                        <span class="direct-chat-name">Sarah Smith</span>
-                        <span class="direct-chat-timestamp">1 hr ago</span>
-                      </div>
-                      <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=SS&background=198754&color=fff&size=40" alt="Avatar">
-                      <div class="direct-chat-text">
-                        Yes! Revenue is up 33% compared to last month. The marketing campaign is paying off.
+                      <img class="direct-chat-img" src="/assets/img/user3-128x128.jpg" alt="Avatar">
+                      <div>
+                        <div class="direct-chat-infos">
+                          <span class="direct-chat-name">Sarah Bullock</span>
+                          <span class="direct-chat-timestamp">23 Jan 2:05 pm</span>
+                        </div>
+                        <div class="direct-chat-text">
+                          You better believe it!
+                        </div>
                       </div>
                     </div>
 
-                    <!-- Message from other user -->
+                    <!-- Message from other user (left) -->
                     <div class="direct-chat-msg">
-                      <div class="direct-chat-infos">
-                        <span class="direct-chat-name">Alex Johnson</span>
-                        <span class="direct-chat-timestamp">45 min ago</span>
-                      </div>
-                      <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=AJ&background=0d6efd&color=fff&size=40" alt="Avatar">
-                      <div class="direct-chat-text">
-                        Awesome! Let's schedule a meeting to discuss Q2 targets.
+                      <img class="direct-chat-img" src="/assets/img/user1-128x128.jpg" alt="Avatar">
+                      <div>
+                        <div class="direct-chat-infos">
+                          <span class="direct-chat-name">Alexander Pierce</span>
+                          <span class="direct-chat-timestamp">23 Jan 5:37 pm</span>
+                        </div>
+                        <div class="direct-chat-text">
+                          Working with AdminLTE on a great new app! Wanna join?
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Contacts pane -->
+                  <!-- Contacts pane (slides over messages only) -->
                   <div class="direct-chat-contacts">
                     <ul class="direct-chat-contacts-list">
                       <li>
-                        <img src="https://ui-avatars.com/api/?name=AJ&background=0d6efd&color=fff&size=40" alt="Avatar">
+                        <img src="/assets/img/user1-128x128.jpg" alt="Avatar">
                         <div class="contacts-info">
-                          <span class="contact-name">Alex Johnson</span>
-                          <span class="contact-status">Online</span>
+                          <span class="contact-name">Count Dracula</span>
+                          <span class="contact-status">2/28/2023</span>
                         </div>
                       </li>
                       <li>
-                        <img src="https://ui-avatars.com/api/?name=MK&background=dc3545&color=fff&size=40" alt="Avatar">
+                        <img src="/assets/img/user7-128x128.jpg" alt="Avatar">
                         <div class="contacts-info">
-                          <span class="contact-name">Maria Kim</span>
-                          <span class="contact-status">Away - 15 min</span>
+                          <span class="contact-name">Sarah Doe</span>
+                          <span class="contact-status">2/23/2023</span>
                         </div>
                       </li>
                       <li>
-                        <img src="https://ui-avatars.com/api/?name=JD&background=ffc107&color=212529&size=40" alt="Avatar">
+                        <img src="/assets/img/user3-128x128.jpg" alt="Avatar">
                         <div class="contacts-info">
-                          <span class="contact-name">James Davis</span>
-                          <span class="contact-status">Offline</span>
+                          <span class="contact-name">Nadia Jolie</span>
+                          <span class="contact-status">2/20/2023</span>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="/assets/img/user5-128x128.jpg" alt="Avatar">
+                        <div class="contacts-info">
+                          <span class="contact-name">Nora S. Vans</span>
+                          <span class="contact-status">2/10/2023</span>
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div class="direct-chat-input-area">
-                  <input type="text" placeholder="Type Message ...">
+                  <input type="text" placeholder="Type Message ..." aria-label="Type a message">
                   <button type="button">Send</button>
                 </div>
               </div>

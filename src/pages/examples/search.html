@@ -7,7 +7,7 @@
   <div class="app-wrapper">
     {{> header/navbar}}
     {{> sidebar/sidebar activePage="examples-search"}}
-    <main class="app-main">
+    <main class="app-main" role="main">
       {{> content/content-header pageTitle="Search Results"}}
       <div class="app-content">
         <div class="w-full px-4" x-data="{ activeTab: 'all', query: 'TailAdminLTE dashboard', currentPage: 1 }">

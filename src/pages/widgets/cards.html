@@ -7,7 +7,7 @@
   <div class="app-wrapper">
     {{> header/navbar}}
     {{> sidebar/sidebar activePage="widgets-cards"}}
-    <main class="app-main">
+    <main class="app-main" role="main">
       {{> content/content-header pageTitle="Card Widgets"}}
       <div class="app-content">
         <div class="w-full px-4">
@@ -325,7 +325,7 @@
                 <div class="direct-chat-messages">
                   <!-- Message (left/incoming) -->
                   <div class="direct-chat-msg">
-                    <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=Alexander+Pierce&background=0d6efd&color=fff&size=40" alt="User">
+                    <img class="direct-chat-img" src="/assets/img/user1-128x128.jpg" alt="User">
                     <div>
                       <div class="direct-chat-infos">
                         <span class="direct-chat-name">Alexander Pierce</span>
@@ -339,7 +339,7 @@
 
                   <!-- Message (right/outgoing) -->
                   <div class="direct-chat-msg right">
-                    <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=Sarah+Bullock&background=198754&color=fff&size=40" alt="User">
+                    <img class="direct-chat-img" src="/assets/img/user3-128x128.jpg" alt="User">
                     <div>
                       <div class="direct-chat-infos">
                         <span class="direct-chat-name">Sarah Bullock</span>
@@ -353,7 +353,7 @@
 
                   <!-- Message (left/incoming) -->
                   <div class="direct-chat-msg">
-                    <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=Alexander+Pierce&background=0d6efd&color=fff&size=40" alt="User">
+                    <img class="direct-chat-img" src="/assets/img/user1-128x128.jpg" alt="User">
                     <div>
                       <div class="direct-chat-infos">
                         <span class="direct-chat-name">Alexander Pierce</span>
@@ -370,21 +370,21 @@
                 <div class="direct-chat-contacts">
                   <ul class="direct-chat-contacts-list">
                     <li>
-                      <img src="https://ui-avatars.com/api/?name=Alex+P&background=0d6efd&color=fff&size=40" alt="">
+                      <img src="/assets/img/user1-128x128.jpg" alt="">
                       <div class="contacts-info">
                         <span class="contact-name">Alexander Pierce</span>
                         <span class="contact-status">Online</span>
                       </div>
                     </li>
                     <li>
-                      <img src="https://ui-avatars.com/api/?name=Sarah+B&background=198754&color=fff&size=40" alt="">
+                      <img src="/assets/img/user3-128x128.jpg" alt="">
                       <div class="contacts-info">
                         <span class="contact-name">Sarah Bullock</span>
                         <span class="contact-status">Online</span>
                       </div>
                     </li>
                     <li>
-                      <img src="https://ui-avatars.com/api/?name=Nora+S&background=dc3545&color=fff&size=40" alt="">
+                      <img src="/assets/img/user5-128x128.jpg" alt="">
                       <div class="contacts-info">
                         <span class="contact-name">Nora Silvester</span>
                         <span class="contact-status">Offline</span>
@@ -394,7 +394,7 @@
                 </div>
               </div>
               <div class="direct-chat-input-area">
-                <input type="text" placeholder="Type Message ...">
+                <input type="text" placeholder="Type Message ..." aria-label="Type a message">
                 <button type="button">Send</button>
               </div>
             </div>

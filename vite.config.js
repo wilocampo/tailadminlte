@@ -59,6 +59,7 @@ export default defineConfig({
         and: (a, b) => a && b,
         json: (context) => JSON.stringify(context),
         includes: (arr, val) => arr && arr.includes(val),
+        startsWith: (str, prefix) => str && str.startsWith(prefix),
       },
     }),
   ],

@@ -23,7 +23,7 @@
 
 ## Features
 
-- **37+ pages** — Dashboards, widgets, UI elements, forms, tables, charts, auth pages, error pages, and more
+- **41+ pages** — Dashboards, widgets, UI elements, forms, tables, charts, auth pages, error pages, layout demos, and more
 - **Tailwind CSS v4** — CSS-first configuration with custom design tokens via `@theme`
 - **Alpine.js** — Lightweight reactivity for sidebar, dropdowns, dark mode, cards, and all interactive components
 - **Chart.js** — Interactive, responsive charts with live dark mode color adaptation
@@ -217,8 +217,10 @@ src/
 - **Chart.js** — Line, bar, horizontal bar, doughnut, pie, radar, polar area, mixed charts
 - **Inline** — Sparkline stat cards, mini bar charts, mini doughnuts, trend lines, CSS-only charts
 
-### Layout Variants (6)
-- Fixed sidebar, fixed header, fixed footer, collapsed sidebar, sidebar mini, logo switch
+### Layout Variants (10)
+- Default sidebar, fixed sidebar, fixed header, fixed footer, fixed complete (all three)
+- Custom area (banners, toolbars, stats rows), sidebar mini, collapsed sidebar, logo switch
+- RTL (right-to-left) layout with Arabic content
 - Each with interactive toggles and explanation
 
 ### Auth & Error Pages (7)
