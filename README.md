@@ -102,7 +102,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/tailadminlte.git
+git clone https://github.com/wilocampo/tailadminlte.git
 cd tailadminlte
 
 # Install dependencies
