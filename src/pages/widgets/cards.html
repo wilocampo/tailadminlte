@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Card Widgets" pathPrefix="../.."}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="widgets-cards"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Card Widgets"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Section: Default Card with Tools -->
+          <h4 class="text-lg font-semibold mb-3">Default Card with Tools</h4>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card" x-data="cardWidget">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i data-lucide="settings" class="inline w-4 h-4 mr-1"></i>
+                  Collapsible Card
+                </h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="toggleCollapse()">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                  </button>
+                  <button class="btn-tool" @click="toggleMaximize()">
+                    <i data-lucide="expand" class="w-4 h-4"></i>
+                  </button>
+                  <button class="btn-tool" @click="remove()">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>This card can be collapsed, maximized, and removed using the tool buttons in the header. Click the minus icon to collapse, the expand icon to maximize, or the X to remove this card entirely.</p>
+              </div>
+              <div class="card-footer text-sm text-gray-500">
+                Card Footer
+              </div>
+            </div>
+
+            <div class="card" x-data="cardWidget">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i data-lucide="bar-chart-3" class="inline w-4 h-4 mr-1"></i>
+                  Maximizable Card
+                </h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="toggleCollapse()">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                  </button>
+                  <button class="btn-tool" @click="toggleMaximize()">
+                    <i data-lucide="expand" class="w-4 h-4"></i>
+                  </button>
+                  <button class="btn-tool" @click="remove()">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>Click the expand button to see this card go full-screen. Press Escape or click the expand button again to return to normal size.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Outlined Cards -->
+          <h4 class="text-lg font-semibold mb-3">Outlined Cards</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div class="card card-outline card-outline-primary">
+              <div class="card-header">
+                <h3 class="card-title">Primary Outline</h3>
+              </div>
+              <div class="card-body">
+                <p>A card with a primary colored top border for visual distinction.</p>
+              </div>
+            </div>
+
+            <div class="card card-outline card-outline-success">
+              <div class="card-header">
+                <h3 class="card-title">Success Outline</h3>
+              </div>
+              <div class="card-body">
+                <p>A card with a success colored top border, ideal for positive information.</p>
+              </div>
+            </div>
+
+            <div class="card card-outline card-outline-warning">
+              <div class="card-header">
+                <h3 class="card-title">Warning Outline</h3>
+              </div>
+              <div class="card-body">
+                <p>A card with a warning colored top border for cautionary content.</p>
+              </div>
+            </div>
+
+            <div class="card card-outline card-outline-danger">
+              <div class="card-header">
+                <h3 class="card-title">Danger Outline</h3>
+              </div>
+              <div class="card-body">
+                <p>A card with a danger colored top border for critical alerts.</p>
+              </div>
+            </div>
+
+            <div class="card card-outline card-outline-info">
+              <div class="card-header">
+                <h3 class="card-title">Info Outline</h3>
+              </div>
+              <div class="card-body">
+                <p>A card with an info colored top border for informational content.</p>
+              </div>
+            </div>
+
+            <div class="card card-outline card-outline-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Secondary Outline</h3>
+              </div>
+              <div class="card-body">
+                <p>A card with a secondary colored top border for neutral content.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Background Colored Cards -->
+          <h4 class="text-lg font-semibold mb-3">Background Colored Cards</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div class="card bg-primary">
+              <div class="card-header">
+                <h3 class="card-title">Primary Card</h3>
+              </div>
+              <div class="card-body">
+                <p>A fully colored primary background card. Text is automatically set to white for readability.</p>
+              </div>
+            </div>
+
+            <div class="card bg-success">
+              <div class="card-header">
+                <h3 class="card-title">Success Card</h3>
+              </div>
+              <div class="card-body">
+                <p>A success themed card with green background, suitable for positive messages.</p>
+              </div>
+            </div>
+
+            <div class="card bg-warning">
+              <div class="card-header">
+                <h3 class="card-title">Warning Card</h3>
+              </div>
+              <div class="card-body">
+                <p>A warning themed card with yellow background. Note the dark text for contrast.</p>
+              </div>
+            </div>
+
+            <div class="card bg-danger">
+              <div class="card-header">
+                <h3 class="card-title">Danger Card</h3>
+              </div>
+              <div class="card-body">
+                <p>A danger themed card with red background for critical or error content.</p>
+              </div>
+            </div>
+
+            <div class="card bg-info">
+              <div class="card-header">
+                <h3 class="card-title">Info Card</h3>
+              </div>
+              <div class="card-body">
+                <p>An info themed card with cyan background for informational content.</p>
+              </div>
+            </div>
+
+            <div class="card bg-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Secondary Card</h3>
+              </div>
+              <div class="card-body">
+                <p>A secondary themed card with gray background for neutral content.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Card with Tabs -->
+          <h4 class="text-lg font-semibold mb-3">Card with Tabs</h4>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card" x-data="{ activeTab: 'tab1' }">
+              <div class="card-header with-tabs">
+                <ul class="card-tabs">
+                  <li>
+                    <a href="#" class="nav-link" :class="{ 'active': activeTab === 'tab1' }" @click.prevent="activeTab = 'tab1'">Tab 1</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link" :class="{ 'active': activeTab === 'tab2' }" @click.prevent="activeTab = 'tab2'">Tab 2</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link" :class="{ 'active': activeTab === 'tab3' }" @click.prevent="activeTab = 'tab3'">Tab 3</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div x-show="activeTab === 'tab1'">
+                  <p>Content for the first tab. This demonstrates the tabbed card interface powered by Alpine.js.</p>
+                </div>
+                <div x-show="activeTab === 'tab2'" style="display: none;">
+                  <p>Content for the second tab. Each tab can hold different content and is toggled client-side.</p>
+                </div>
+                <div x-show="activeTab === 'tab3'" style="display: none;">
+                  <p>Content for the third tab. Tabs are styled to match the AdminLTE design language.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-outline card-outline-primary" x-data="{ activeTab: 'settings' }">
+              <div class="card-header with-tabs">
+                <ul class="card-tabs">
+                  <li>
+                    <a href="#" class="nav-link" :class="{ 'active': activeTab === 'settings' }" @click.prevent="activeTab = 'settings'">Settings</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link" :class="{ 'active': activeTab === 'profile' }" @click.prevent="activeTab = 'profile'">Profile</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div x-show="activeTab === 'settings'">
+                  <p>Application settings would go here. This card combines the outlined style with tabs.</p>
+                </div>
+                <div x-show="activeTab === 'profile'" style="display: none;">
+                  <p>User profile information displayed in tab two of an outlined card.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Collapsed Card -->
+          <h4 class="text-lg font-semibold mb-3">Collapsed Card</h4>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card collapsed-card" x-data="cardWidget" x-init="collapsed = true">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i data-lucide="chevron-down" class="inline w-4 h-4 mr-1"></i>
+                  Initially Collapsed
+                </h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="toggleCollapse()">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>This card starts collapsed. Click the plus button in the header to expand and see this content. The body and footer are hidden until expanded.</p>
+              </div>
+              <div class="card-footer text-sm text-gray-500">
+                Hidden footer that appears when expanded.
+              </div>
+            </div>
+
+            <div class="card" x-data="cardWidget">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i data-lucide="chevron-up" class="inline w-4 h-4 mr-1"></i>
+                  Initially Expanded
+                </h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="toggleCollapse()">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>This card starts expanded (default state). Click the minus button to collapse it.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Card with Loading Overlay -->
+          <h4 class="text-lg font-semibold mb-3">Card with Loading Overlay</h4>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card" x-data="{ loading: true }">
+              <div class="card-header">
+                <h3 class="card-title">Loading State</h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="loading = !loading">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>This card shows a loading overlay. Click the refresh icon to toggle the loading state on and off.</p>
+              </div>
+              <!-- Loading overlay -->
+              <div class="overlay" x-show="loading" x-transition>
+                <div class="flex flex-col items-center gap-2">
+                  <i data-lucide="loader-2" class="w-8 h-8 animate-spin text-primary"></i>
+                  <span class="text-sm text-gray-500">Loading...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">No Loading</h3>
+              </div>
+              <div class="card-body">
+                <p>A regular card without a loading overlay, for comparison. The loading overlay sits on top of the card content with a semi-transparent background.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Direct Chat Widget -->
+          <h4 class="text-lg font-semibold mb-3">Direct Chat Widget</h4>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card direct-chat direct-chat-primary" x-data="directChat">
+              <div class="card-header">
+                <h3 class="card-title">Direct Chat</h3>
+                <div class="card-tools">
+                  <span class="text-xs mr-2">3 Messages</span>
+                  <button class="btn-tool" @click="toggleContacts()">
+                    <i data-lucide="contact" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="direct-chat-messages">
+                  <!-- Message (left/incoming) -->
+                  <div class="direct-chat-msg">
+                    <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=Alexander+Pierce&background=0d6efd&color=fff&size=40" alt="User">
+                    <div>
+                      <div class="direct-chat-infos">
+                        <span class="direct-chat-name">Alexander Pierce</span>
+                        <span class="direct-chat-timestamp">23 Jan 2:00 pm</span>
+                      </div>
+                      <div class="direct-chat-text">
+                        Is this template really free? That's amazing!
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Message (right/outgoing) -->
+                  <div class="direct-chat-msg right">
+                    <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=Sarah+Bullock&background=198754&color=fff&size=40" alt="User">
+                    <div>
+                      <div class="direct-chat-infos">
+                        <span class="direct-chat-name">Sarah Bullock</span>
+                        <span class="direct-chat-timestamp">23 Jan 2:05 pm</span>
+                      </div>
+                      <div class="direct-chat-text">
+                        You bet! It's built with Tailwind CSS and Alpine.js.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Message (left/incoming) -->
+                  <div class="direct-chat-msg">
+                    <img class="direct-chat-img" src="https://ui-avatars.com/api/?name=Alexander+Pierce&background=0d6efd&color=fff&size=40" alt="User">
+                    <div>
+                      <div class="direct-chat-infos">
+                        <span class="direct-chat-name">Alexander Pierce</span>
+                        <span class="direct-chat-timestamp">23 Jan 5:37 pm</span>
+                      </div>
+                      <div class="direct-chat-text">
+                        That's great. I've been looking for something like this for a while. Thanks for sharing!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Contacts pane -->
+                <div class="direct-chat-contacts">
+                  <ul class="direct-chat-contacts-list">
+                    <li>
+                      <img src="https://ui-avatars.com/api/?name=Alex+P&background=0d6efd&color=fff&size=40" alt="">
+                      <div class="contacts-info">
+                        <span class="contact-name">Alexander Pierce</span>
+                        <span class="contact-status">Online</span>
+                      </div>
+                    </li>
+                    <li>
+                      <img src="https://ui-avatars.com/api/?name=Sarah+B&background=198754&color=fff&size=40" alt="">
+                      <div class="contacts-info">
+                        <span class="contact-name">Sarah Bullock</span>
+                        <span class="contact-status">Online</span>
+                      </div>
+                    </li>
+                    <li>
+                      <img src="https://ui-avatars.com/api/?name=Nora+S&background=dc3545&color=fff&size=40" alt="">
+                      <div class="contacts-info">
+                        <span class="contact-name">Nora Silvester</span>
+                        <span class="contact-status">Offline</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="direct-chat-input-area">
+                <input type="text" placeholder="Type Message ...">
+                <button type="button">Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

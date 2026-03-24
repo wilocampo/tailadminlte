@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Data Tables" pathPrefix="../.."}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="tables-data"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Data Tables"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Sortable Table -->
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Sortable Table</h3></div>
+            <div class="card-body p-0" x-data="{
+              sortKey: 'name',
+              sortDir: 'asc',
+              data: [
+                { name: 'Alice Johnson', department: 'Engineering', position: 'Senior Developer', salary: 95000 },
+                { name: 'Bob Smith', department: 'Marketing', position: 'Marketing Manager', salary: 82000 },
+                { name: 'Carol Williams', department: 'Design', position: 'UX Designer', salary: 78000 },
+                { name: 'David Brown', department: 'Engineering', position: 'DevOps Engineer', salary: 90000 },
+                { name: 'Eve Davis', department: 'HR', position: 'HR Specialist', salary: 65000 },
+                { name: 'Frank Miller', department: 'Sales', position: 'Sales Director', salary: 105000 },
+                { name: 'Grace Lee', department: 'Engineering', position: 'Frontend Developer', salary: 85000 },
+                { name: 'Henry Wilson', department: 'Finance', position: 'Accountant', salary: 72000 }
+              ],
+              get sorted() {
+                return [...this.data].sort((a, b) => {
+                  let valA = a[this.sortKey], valB = b[this.sortKey];
+                  if (typeof valA === 'string') { valA = valA.toLowerCase(); valB = valB.toLowerCase(); }
+                  if (valA < valB) return this.sortDir === 'asc' ? -1 : 1;
+                  if (valA > valB) return this.sortDir === 'asc' ? 1 : -1;
+                  return 0;
+                });
+              },
+              sort(key) {
+                if (this.sortKey === key) { this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc'; }
+                else { this.sortKey = key; this.sortDir = 'asc'; }
+              },
+              icon(key) {
+                if (this.sortKey !== key) return 'arrow-up-down';
+                return this.sortDir === 'asc' ? 'arrow-up' : 'arrow-down';
+              }
+            }">
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                  <thead class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-50 dark:bg-gray-700">
+                    <tr>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('name')">
+                        <span class="flex items-center gap-1">Name <i :data-lucide="icon('name')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('department')">
+                        <span class="flex items-center gap-1">Department <i :data-lucide="icon('department')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('position')">
+                        <span class="flex items-center gap-1">Position <i :data-lucide="icon('position')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('salary')">
+                        <span class="flex items-center gap-1">Salary <i :data-lucide="icon('salary')" class="w-3 h-3"></i></span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template x-for="(row, i) in sorted" :key="row.name">
+                      <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <td class="px-4 py-3 font-medium" x-text="row.name"></td>
+                        <td class="px-4 py-3" x-text="row.department"></td>
+                        <td class="px-4 py-3" x-text="row.position"></td>
+                        <td class="px-4 py-3" x-text="'$' + row.salary.toLocaleString()"></td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Searchable / Filterable Table -->
+          <div class="card mb-4">
+            <div class="card-header flex items-center justify-between">
+              <h3 class="card-title">Searchable &amp; Filterable Table</h3>
+            </div>
+            <div class="card-body" x-data="{
+              search: '',
+              filterDept: '',
+              data: [
+                { id: 1, name: 'Alice Johnson', email: 'alice@company.com', department: 'Engineering', status: 'Active' },
+                { id: 2, name: 'Bob Smith', email: 'bob@company.com', department: 'Marketing', status: 'Active' },
+                { id: 3, name: 'Carol Williams', email: 'carol@company.com', department: 'Design', status: 'Inactive' },
+                { id: 4, name: 'David Brown', email: 'david@company.com', department: 'Engineering', status: 'Active' },
+                { id: 5, name: 'Eve Davis', email: 'eve@company.com', department: 'HR', status: 'Active' },
+                { id: 6, name: 'Frank Miller', email: 'frank@company.com', department: 'Sales', status: 'Inactive' },
+                { id: 7, name: 'Grace Lee', email: 'grace@company.com', department: 'Engineering', status: 'Active' },
+                { id: 8, name: 'Henry Wilson', email: 'henry@company.com', department: 'Finance', status: 'Active' },
+                { id: 9, name: 'Ivy Chen', email: 'ivy@company.com', department: 'Design', status: 'Active' },
+                { id: 10, name: 'Jack Taylor', email: 'jack@company.com', department: 'Marketing', status: 'Inactive' }
+              ],
+              get departments() { return [...new Set(this.data.map(d => d.department))].sort(); },
+              get filtered() {
+                return this.data.filter(row => {
+                  const matchSearch = !this.search || row.name.toLowerCase().includes(this.search.toLowerCase()) || row.email.toLowerCase().includes(this.search.toLowerCase());
+                  const matchDept = !this.filterDept || row.department === this.filterDept;
+                  return matchSearch && matchDept;
+                });
+              }
+            }">
+              <div class="flex flex-wrap gap-3 mb-4">
+                <div class="relative flex-1 min-w-[200px]">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                  </span>
+                  <input type="text" x-model="search" placeholder="Search by name or email..." class="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200 placeholder:text-gray-400">
+                </div>
+                <select x-model="filterDept" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200">
+                  <option value="">All Departments</option>
+                  <template x-for="dept in departments" :key="dept">
+                    <option :value="dept" x-text="dept"></option>
+                  </template>
+                </select>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                  <thead class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-50 dark:bg-gray-700">
+                    <tr>
+                      <th class="px-4 py-3">ID</th>
+                      <th class="px-4 py-3">Name</th>
+                      <th class="px-4 py-3">Email</th>
+                      <th class="px-4 py-3">Department</th>
+                      <th class="px-4 py-3">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template x-for="row in filtered" :key="row.id">
+                      <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <td class="px-4 py-3" x-text="row.id"></td>
+                        <td class="px-4 py-3 font-medium" x-text="row.name"></td>
+                        <td class="px-4 py-3" x-text="row.email"></td>
+                        <td class="px-4 py-3" x-text="row.department"></td>
+                        <td class="px-4 py-3">
+                          <span :class="row.status === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'" class="px-2 py-0.5 text-xs font-medium rounded-full" x-text="row.status"></span>
+                        </td>
+                      </tr>
+                    </template>
+                    <tr x-show="filtered.length === 0">
+                      <td colspan="5" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">No matching records found.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">Showing <span x-text="filtered.length"></span> of <span x-text="data.length"></span> entries</p>
+            </div>
+          </div>
+
+          <!-- Table with Pagination -->
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Table with Pagination</h3></div>
+            <div class="card-body" x-data="{
+              page: 1,
+              perPage: 5,
+              data: [
+                { id: 1, product: 'Laptop Pro 15', category: 'Electronics', price: 1299, stock: 45 },
+                { id: 2, product: 'Wireless Mouse', category: 'Accessories', price: 29.99, stock: 230 },
+                { id: 3, product: 'USB-C Hub', category: 'Accessories', price: 49.99, stock: 112 },
+                { id: 4, product: 'Mechanical Keyboard', category: 'Accessories', price: 89.99, stock: 78 },
+                { id: 5, product: 'Monitor 27 inch', category: 'Electronics', price: 399.99, stock: 22 },
+                { id: 6, product: 'Webcam HD', category: 'Electronics', price: 79.99, stock: 156 },
+                { id: 7, product: 'Desk Lamp', category: 'Furniture', price: 34.99, stock: 89 },
+                { id: 8, product: 'Ergonomic Chair', category: 'Furniture', price: 549.99, stock: 15 },
+                { id: 9, product: 'Standing Desk', category: 'Furniture', price: 699.99, stock: 8 },
+                { id: 10, product: 'Headphones', category: 'Electronics', price: 199.99, stock: 67 },
+                { id: 11, product: 'Mousepad XL', category: 'Accessories', price: 19.99, stock: 340 },
+                { id: 12, product: 'Monitor Arm', category: 'Accessories', price: 129.99, stock: 54 },
+                { id: 13, product: 'Cable Organizer', category: 'Accessories', price: 12.99, stock: 420 },
+                { id: 14, product: 'Tablet 10 inch', category: 'Electronics', price: 449.99, stock: 31 },
+                { id: 15, product: 'Keyboard Wrist Rest', category: 'Accessories', price: 24.99, stock: 180 }
+              ],
+              get totalPages() { return Math.ceil(this.data.length / this.perPage); },
+              get paginated() { const start = (this.page - 1) * this.perPage; return this.data.slice(start, start + this.perPage); },
+              get startEntry() { return (this.page - 1) * this.perPage + 1; },
+              get endEntry() { return Math.min(this.page * this.perPage, this.data.length); },
+              goTo(p) { if (p >= 1 && p <= this.totalPages) this.page = p; },
+              get pageNumbers() {
+                const pages = [];
+                for (let i = 1; i <= this.totalPages; i++) pages.push(i);
+                return pages;
+              }
+            }">
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                  <thead class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-50 dark:bg-gray-700">
+                    <tr>
+                      <th class="px-4 py-3">ID</th>
+                      <th class="px-4 py-3">Product</th>
+                      <th class="px-4 py-3">Category</th>
+                      <th class="px-4 py-3">Price</th>
+                      <th class="px-4 py-3">Stock</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template x-for="row in paginated" :key="row.id">
+                      <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <td class="px-4 py-3" x-text="row.id"></td>
+                        <td class="px-4 py-3 font-medium" x-text="row.product"></td>
+                        <td class="px-4 py-3" x-text="row.category"></td>
+                        <td class="px-4 py-3" x-text="'$' + row.price.toLocaleString(undefined, { minimumFractionDigits: 2 })"></td>
+                        <td class="px-4 py-3" x-text="row.stock"></td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination controls -->
+              <div class="flex flex-wrap items-center justify-between gap-2 mt-4">
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  Showing <span x-text="startEntry"></span> to <span x-text="endEntry"></span> of <span x-text="data.length"></span> entries
+                </p>
+                <nav class="flex items-center gap-1">
+                  <button @click="goTo(page - 1)" :disabled="page === 1" :class="page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-gray-600'" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                  </button>
+                  <template x-for="p in pageNumbers" :key="p">
+                    <button @click="goTo(p)" :class="p === page ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300 dark:border-gray-600'" class="px-3 py-1.5 text-sm border rounded-md transition-colors" x-text="p"></button>
+                  </template>
+                  <button @click="goTo(page + 1)" :disabled="page === totalPages" :class="page === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-gray-600'" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <!-- Combined: Sortable + Searchable + Paginated -->
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">Combined Data Table (Sort + Search + Pagination)</h3></div>
+            <div class="card-body" x-data="{
+              search: '',
+              sortKey: 'id',
+              sortDir: 'asc',
+              page: 1,
+              perPage: 5,
+              data: [
+                { id: 1, name: 'Alice Johnson', email: 'alice.johnson@company.com', department: 'Engineering', position: 'Senior Developer', salary: 95000, startDate: '2020-03-15', status: 'Active' },
+                { id: 2, name: 'Bob Smith', email: 'bob.smith@company.com', department: 'Marketing', position: 'Marketing Manager', salary: 82000, startDate: '2019-07-22', status: 'Active' },
+                { id: 3, name: 'Carol Williams', email: 'carol.williams@company.com', department: 'Design', position: 'UX Designer', salary: 78000, startDate: '2021-01-10', status: 'Inactive' },
+                { id: 4, name: 'David Brown', email: 'david.brown@company.com', department: 'Engineering', position: 'DevOps Engineer', salary: 90000, startDate: '2020-09-05', status: 'Active' },
+                { id: 5, name: 'Eve Davis', email: 'eve.davis@company.com', department: 'HR', position: 'HR Specialist', salary: 65000, startDate: '2022-04-18', status: 'Active' },
+                { id: 6, name: 'Frank Miller', email: 'frank.miller@company.com', department: 'Sales', position: 'Sales Director', salary: 105000, startDate: '2018-11-30', status: 'Active' },
+                { id: 7, name: 'Grace Lee', email: 'grace.lee@company.com', department: 'Engineering', position: 'Frontend Developer', salary: 85000, startDate: '2021-06-14', status: 'Active' },
+                { id: 8, name: 'Henry Wilson', email: 'henry.wilson@company.com', department: 'Finance', position: 'Accountant', salary: 72000, startDate: '2020-02-28', status: 'Active' },
+                { id: 9, name: 'Ivy Chen', email: 'ivy.chen@company.com', department: 'Design', position: 'Graphic Designer', salary: 70000, startDate: '2022-08-01', status: 'Active' },
+                { id: 10, name: 'Jack Taylor', email: 'jack.taylor@company.com', department: 'Marketing', position: 'Content Writer', salary: 58000, startDate: '2023-01-15', status: 'Inactive' },
+                { id: 11, name: 'Karen White', email: 'karen.white@company.com', department: 'Engineering', position: 'QA Engineer', salary: 80000, startDate: '2021-11-22', status: 'Active' },
+                { id: 12, name: 'Leo Martinez', email: 'leo.martinez@company.com', department: 'Sales', position: 'Account Executive', salary: 68000, startDate: '2022-05-10', status: 'Active' },
+                { id: 13, name: 'Mia Robinson', email: 'mia.robinson@company.com', department: 'HR', position: 'Recruiter', salary: 62000, startDate: '2023-03-05', status: 'Active' },
+                { id: 14, name: 'Noah Clark', email: 'noah.clark@company.com', department: 'Engineering', position: 'Backend Developer', salary: 92000, startDate: '2020-07-19', status: 'Active' },
+                { id: 15, name: 'Olivia Hall', email: 'olivia.hall@company.com', department: 'Finance', position: 'Financial Analyst', salary: 75000, startDate: '2021-09-12', status: 'Inactive' }
+              ],
+              get filtered() {
+                if (!this.search) return this.data;
+                const s = this.search.toLowerCase();
+                return this.data.filter(row => row.name.toLowerCase().includes(s) || row.email.toLowerCase().includes(s) || row.department.toLowerCase().includes(s) || row.position.toLowerCase().includes(s));
+              },
+              get sorted() {
+                return [...this.filtered].sort((a, b) => {
+                  let valA = a[this.sortKey], valB = b[this.sortKey];
+                  if (typeof valA === 'string') { valA = valA.toLowerCase(); valB = valB.toLowerCase(); }
+                  if (valA < valB) return this.sortDir === 'asc' ? -1 : 1;
+                  if (valA > valB) return this.sortDir === 'asc' ? 1 : -1;
+                  return 0;
+                });
+              },
+              get totalPages() { return Math.ceil(this.sorted.length / this.perPage) || 1; },
+              get paginated() { const start = (this.page - 1) * this.perPage; return this.sorted.slice(start, start + this.perPage); },
+              get startEntry() { return this.sorted.length === 0 ? 0 : (this.page - 1) * this.perPage + 1; },
+              get endEntry() { return Math.min(this.page * this.perPage, this.sorted.length); },
+              sort(key) {
+                if (this.sortKey === key) { this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc'; }
+                else { this.sortKey = key; this.sortDir = 'asc'; }
+                this.page = 1;
+              },
+              icon(key) {
+                if (this.sortKey !== key) return 'arrow-up-down';
+                return this.sortDir === 'asc' ? 'arrow-up' : 'arrow-down';
+              },
+              goTo(p) { if (p >= 1 && p <= this.totalPages) this.page = p; },
+              get pageNumbers() {
+                const pages = [];
+                for (let i = 1; i <= this.totalPages; i++) pages.push(i);
+                return pages;
+              }
+            }" x-effect="if (page > totalPages) page = totalPages">
+              <!-- Search & per-page controls -->
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-2">
+                  <label class="text-sm text-gray-600 dark:text-gray-400">Show</label>
+                  <select x-model.number="perPage" @change="page = 1" class="px-2 py-1.5 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary dark:text-gray-200">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                  </select>
+                  <label class="text-sm text-gray-600 dark:text-gray-400">entries</label>
+                </div>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                  </span>
+                  <input type="text" x-model="search" @input="page = 1" placeholder="Search..." class="pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200 placeholder:text-gray-400">
+                </div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                  <thead class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-50 dark:bg-gray-700">
+                    <tr>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('id')">
+                        <span class="flex items-center gap-1">ID <i :data-lucide="icon('id')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('name')">
+                        <span class="flex items-center gap-1">Name <i :data-lucide="icon('name')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('department')">
+                        <span class="flex items-center gap-1">Department <i :data-lucide="icon('department')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('position')">
+                        <span class="flex items-center gap-1">Position <i :data-lucide="icon('position')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('salary')">
+                        <span class="flex items-center gap-1">Salary <i :data-lucide="icon('salary')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3 cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors" @click="sort('startDate')">
+                        <span class="flex items-center gap-1">Start Date <i :data-lucide="icon('startDate')" class="w-3 h-3"></i></span>
+                      </th>
+                      <th class="px-4 py-3">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template x-for="row in paginated" :key="row.id">
+                      <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <td class="px-4 py-3" x-text="row.id"></td>
+                        <td class="px-4 py-3 font-medium whitespace-nowrap" x-text="row.name"></td>
+                        <td class="px-4 py-3" x-text="row.department"></td>
+                        <td class="px-4 py-3 whitespace-nowrap" x-text="row.position"></td>
+                        <td class="px-4 py-3" x-text="'$' + row.salary.toLocaleString()"></td>
+                        <td class="px-4 py-3 whitespace-nowrap" x-text="row.startDate"></td>
+                        <td class="px-4 py-3">
+                          <span :class="row.status === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'" class="px-2 py-0.5 text-xs font-medium rounded-full" x-text="row.status"></span>
+                        </td>
+                      </tr>
+                    </template>
+                    <tr x-show="sorted.length === 0">
+                      <td colspan="7" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">No matching records found.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination -->
+              <div class="flex flex-wrap items-center justify-between gap-2 mt-4">
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  Showing <span x-text="startEntry"></span> to <span x-text="endEntry"></span> of <span x-text="sorted.length"></span> entries
+                  <span x-show="search" class="text-gray-400">(filtered from <span x-text="data.length"></span> total)</span>
+                </p>
+                <nav class="flex items-center gap-1">
+                  <button @click="goTo(page - 1)" :disabled="page <= 1" :class="page <= 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-gray-600'" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                  </button>
+                  <template x-for="p in pageNumbers" :key="p">
+                    <button @click="goTo(p)" :class="p === page ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300 dark:border-gray-600'" class="px-3 py-1.5 text-sm border rounded-md transition-colors" x-text="p"></button>
+                  </template>
+                  <button @click="goTo(page + 1)" :disabled="page >= totalPages" :class="page >= totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-gray-600'" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

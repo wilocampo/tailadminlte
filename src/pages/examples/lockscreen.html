@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Lockscreen" pathPrefix="../.."}}
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  {{> ui/dark-mode-toggle}}
+
+  <div class="lockscreen-page">
+    <div class="lockscreen-card">
+
+      <!-- Clock -->
+      <div class="lockscreen-clock" x-data="lockscreenClock()" x-init="init()">
+        <div class="lockscreen-time" x-text="time">12:00</div>
+        <div class="lockscreen-date" x-text="date">Tuesday, March 24, 2026</div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="lockscreen-avatar">
+        <span class="avatar-placeholder">
+          <i data-lucide="user" class="w-10 h-10"></i>
+        </span>
+      </div>
+
+      <!-- User Info -->
+      <div class="lockscreen-name">John Doe</div>
+      <div class="lockscreen-subtitle">Enter your password to unlock</div>
+
+      <!-- Unlock Form -->
+      <form class="lockscreen-form" onsubmit="return false;">
+        <input type="password" placeholder="Password" autocomplete="current-password">
+        <button type="submit" title="Unlock">
+          <i data-lucide="unlock" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="lockscreen-footer">
+        <a href="/pages/examples/login-v1.html">Or sign in as a different user</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function lockscreenClock() {
+      return {
+        time: '',
+        date: '',
+        init() {
+          this.update();
+          setInterval(() => this.update(), 1000);
+        },
+        update() {
+          const now = new Date();
+          this.time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+          this.date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+      };
+    }
+  </script>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

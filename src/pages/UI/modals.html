@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Modals" pathPrefix="../.."}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="ui-modals"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Modals"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Default & Sized Modals -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Default Modal</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Click the button to open a standard modal dialog.</p>
+                <div x-data="{ open: false }">
+                  <button @click="open = true" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium transition-colors">Launch Default Modal</button>
+                  <!-- Backdrop -->
+                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                  <!-- Modal -->
+                  <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg" @click.stop>
+                      <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+                        <h5 class="text-lg font-semibold">Default Modal</h5>
+                        <button @click="open = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+                      </div>
+                      <div class="p-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-400">This is the default modal. It centers on the viewport and has a backdrop overlay. Click outside or press the X to close it.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Modals are built using Alpine.js for state management and Tailwind CSS for styling. They support dark mode automatically.</p>
+                      </div>
+                      <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                        <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Close</button>
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">Save Changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Modal Sizes</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Modals come in various sizes for different content needs.</p>
+                <div class="flex flex-wrap gap-2">
+                  <!-- Small Modal -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm font-medium transition-colors">Small Modal</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-sm" @click.stop>
+                        <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Small Modal</h5>
+                          <button @click="open = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This is a small modal (max-w-sm). Ideal for simple confirmations or brief messages.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Large Modal -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-yellow-500 text-gray-900 rounded hover:bg-yellow-600 text-sm font-medium transition-colors">Large Modal</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-3xl" @click.stop>
+                        <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Large Modal</h5>
+                          <button @click="open = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This is a large modal (max-w-3xl). Useful for displaying detailed information, large forms, or data tables.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Extra Large Modal -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm font-medium transition-colors">XL Modal</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-5xl" @click.stop>
+                        <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Extra Large Modal</h5>
+                          <button @click="open = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This is an extra large modal (max-w-5xl). Perfect for complex layouts, dashboards, or multi-step wizards that need maximum screen space.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scrollable & Centered Modals -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Scrollable Modal</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">When modal content is long, the body becomes scrollable while the header and footer remain fixed.</p>
+                <div x-data="{ open: false }">
+                  <button @click="open = true" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium transition-colors">Scrollable Modal</button>
+                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                  <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg max-h-[80vh] flex flex-col" @click.stop>
+                      <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center shrink-0">
+                        <h5 class="text-lg font-semibold">Scrollable Modal</h5>
+                        <button @click="open = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+                      </div>
+                      <div class="p-4 overflow-y-auto">
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">This modal has a scrollable body. The content below demonstrates how the modal handles overflow content while keeping the header and footer fixed.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                      </div>
+                      <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2 shrink-0">
+                        <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Close</button>
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">Understood</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Centered Modal</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">This modal is vertically centered in the viewport.</p>
+                <div x-data="{ open: false }">
+                  <button @click="open = true" class="px-4 py-2 bg-cyan-500 text-gray-900 rounded hover:bg-cyan-600 text-sm font-medium transition-colors">Centered Modal</button>
+                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                  <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg" @click.stop>
+                      <div class="p-6 text-center">
+                        <div class="mx-auto w-16 h-16 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center mb-4">
+                          <i data-lucide="info" class="w-8 h-8 text-cyan-600 dark:text-cyan-400"></i>
+                        </div>
+                        <h5 class="text-xl font-semibold mb-2">Centered Modal</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">This modal is centered both vertically and horizontally. It uses a centered layout with an icon, useful for informational dialogs.</p>
+                      </div>
+                      <div class="p-4 border-t dark:border-gray-700 flex justify-center gap-2">
+                        <button @click="open = false" class="px-6 py-2 bg-cyan-500 text-gray-900 rounded hover:bg-cyan-600 text-sm font-medium">Got it!</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colored Header & Confirmation Modals -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Colored Header Modals</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Modals with colored headers for different contexts.</p>
+                <div class="flex flex-wrap gap-2">
+                  <!-- Primary Header -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium transition-colors">Primary</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg overflow-hidden" @click.stop>
+                        <div class="p-4 bg-blue-600 text-white flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Primary Modal</h5>
+                          <button @click="open = false" class="text-white/70 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This modal features a primary blue header, suitable for standard informational dialogs.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Close</button>
+                          <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Success Header -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm font-medium transition-colors">Success</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg overflow-hidden" @click.stop>
+                        <div class="p-4 bg-green-600 text-white flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Success Modal</h5>
+                          <button @click="open = false" class="text-white/70 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This modal has a success green header, perfect for confirmation messages or success notifications.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm">OK</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Warning Header -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-yellow-500 text-gray-900 rounded hover:bg-yellow-600 text-sm font-medium transition-colors">Warning</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg overflow-hidden" @click.stop>
+                        <div class="p-4 bg-yellow-500 text-gray-900 flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Warning Modal</h5>
+                          <button @click="open = false" class="text-gray-900/60 hover:text-gray-900"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This modal has a warning yellow header, ideal for cautionary messages or important notices.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Cancel</button>
+                          <button class="px-4 py-2 bg-yellow-500 text-gray-900 rounded hover:bg-yellow-600 text-sm">Proceed</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Danger Header -->
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm font-medium transition-colors">Danger</button>
+                    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                    <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg overflow-hidden" @click.stop>
+                        <div class="p-4 bg-red-600 text-white flex justify-between items-center">
+                          <h5 class="text-lg font-semibold">Danger Modal</h5>
+                          <button @click="open = false" class="text-white/70 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-4">
+                          <p class="text-sm text-gray-600 dark:text-gray-400">This modal has a danger red header, used for destructive action confirmations or critical error messages.</p>
+                        </div>
+                        <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                          <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Cancel</button>
+                          <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Confirmation Modal</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">A common pattern for destructive action confirmations.</p>
+                <div x-data="{ open: false }">
+                  <button @click="open = true" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm font-medium transition-colors">
+                    <i data-lucide="trash" class="w-4 h-4"></i> Delete Account
+                  </button>
+                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                  <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md" @click.stop>
+                      <div class="p-6 text-center">
+                        <div class="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-4">
+                          <i data-lucide="alert-triangle" class="w-8 h-8 text-red-600 dark:text-red-400"></i>
+                        </div>
+                        <h5 class="text-xl font-semibold mb-2">Are you sure?</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">This action cannot be undone. Your account and all associated data will be permanently deleted.</p>
+                      </div>
+                      <div class="p-4 border-t dark:border-gray-700 flex justify-center gap-3">
+                        <button @click="open = false" class="px-6 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm font-medium dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Cancel</button>
+                        <button @click="open = false" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm font-medium">Yes, Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Modal -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Form Modal</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">A modal containing a form for data entry.</p>
+                <div x-data="{ open: false }">
+                  <button @click="open = true" class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm font-medium transition-colors">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Add New User
+                  </button>
+                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                  <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg" @click.stop>
+                      <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+                        <h5 class="text-lg font-semibold">Add New User</h5>
+                        <button @click="open = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+                      </div>
+                      <div class="p-4">
+                        <form class="space-y-4">
+                          <div>
+                            <label class="block text-sm font-medium mb-1">Full Name</label>
+                            <input type="text" placeholder="Enter full name" class="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                          </div>
+                          <div>
+                            <label class="block text-sm font-medium mb-1">Email Address</label>
+                            <input type="email" placeholder="Enter email" class="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                          </div>
+                          <div>
+                            <label class="block text-sm font-medium mb-1">Role</label>
+                            <select class="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                              <option>Select a role...</option>
+                              <option>Administrator</option>
+                              <option>Editor</option>
+                              <option>Viewer</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label class="block text-sm font-medium mb-1">Bio</label>
+                            <textarea rows="3" placeholder="Short bio..." class="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <input type="checkbox" id="sendInvite" class="rounded border-gray-300 dark:border-gray-600">
+                            <label for="sendInvite" class="text-sm">Send invitation email</label>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="p-4 border-t dark:border-gray-700 flex justify-end gap-2">
+                        <button @click="open = false" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Cancel</button>
+                        <button class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm">Create User</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Success/Info Confirmation -->
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Success Confirmation Modal</h3></div>
+              <div class="card-body">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">A modal to confirm successful actions with a visual indicator.</p>
+                <div x-data="{ open: false }">
+                  <button @click="open = true" class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm font-medium transition-colors">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Submit Order
+                  </button>
+                  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50 z-[1050]" @click="open = false"></div>
+                  <div x-show="open" x-transition class="fixed inset-0 z-[1055] flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-sm" @click.stop>
+                      <div class="p-8 text-center">
+                        <div class="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
+                          <i data-lucide="check" class="w-10 h-10 text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <h5 class="text-xl font-semibold mb-2 text-green-700 dark:text-green-400">Success!</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Your order has been submitted successfully. You will receive a confirmation email shortly.</p>
+                      </div>
+                      <div class="p-4 border-t dark:border-gray-700 flex justify-center">
+                        <button @click="open = false" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm font-medium">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

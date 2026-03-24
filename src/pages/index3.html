@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Dashboard v3"}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="index3"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Dashboard v3"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Small Stat Boxes -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>1,250</h3>
+                <p>Total Products</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="package"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                Manage products <i data-lucide="arrow-right" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>$32.5k</h3>
+                <p>Monthly Revenue</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="wallet"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                View report <i data-lucide="arrow-right" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>18</h3>
+                <p>Pending Tickets</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="ticket"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                View tickets <i data-lucide="arrow-right" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>87<sup class="text-xl">%</sup></h3>
+                <p>Satisfaction Rate</p>
+              </div>
+              <div class="small-box-icon">
+                <i data-lucide="smile"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                View reviews <i data-lucide="arrow-right" class="inline w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Middle Row: Chart + Todo + Timeline -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4">
+
+            <!-- Doughnut Chart -->
+            <div class="lg:col-span-4">
+              <div class="card" x-data="cardWidget">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i data-lucide="pie-chart" class="inline w-4 h-4 mr-1"></i>
+                    Sales by Category
+                  </h3>
+                  <div class="card-tools">
+                    <button class="btn-tool" @click="toggleCollapse()">
+                      <i data-lucide="minus" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="relative mx-auto" style="height: 260px; max-width: 260px;">
+                    <canvas id="doughnutChart"></canvas>
+                  </div>
+                  <div class="mt-4 space-y-2 text-sm">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full" style="background-color: #0d6efd;"></span>
+                        <span>Electronics</span>
+                      </div>
+                      <span class="font-semibold">35%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full" style="background-color: #198754;"></span>
+                        <span>Clothing</span>
+                      </div>
+                      <span class="font-semibold">25%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full" style="background-color: #ffc107;"></span>
+                        <span>Home &amp; Garden</span>
+                      </div>
+                      <span class="font-semibold">20%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full" style="background-color: #dc3545;"></span>
+                        <span>Sports</span>
+                      </div>
+                      <span class="font-semibold">12%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full" style="background-color: #6c757d;"></span>
+                        <span>Other</span>
+                      </div>
+                      <span class="font-semibold">8%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Todo List Widget -->
+            <div class="lg:col-span-4">
+              <div class="card" x-data="{ todos: [
+                { id: 1, text: 'Review Q1 financial report', done: false, color: 'danger' },
+                { id: 2, text: 'Update product inventory', done: true, color: 'warning' },
+                { id: 3, text: 'Prepare marketing deck', done: false, color: 'primary' },
+                { id: 4, text: 'Schedule team standup', done: true, color: 'success' },
+                { id: 5, text: 'Deploy v2.3 hotfix', done: false, color: 'info' },
+                { id: 6, text: 'Reply to client feedback', done: false, color: 'secondary' },
+                { id: 7, text: 'Update SSL certificates', done: true, color: 'danger' },
+                { id: 8, text: 'Optimize database queries', done: false, color: 'warning' },
+              ] }">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i data-lucide="check-square" class="inline w-4 h-4 mr-1"></i>
+                    Todo List
+                  </h3>
+                  <div class="card-tools">
+                    <span class="text-xs mr-2" x-text="todos.filter(t => !t.done).length + ' pending'"></span>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <ul class="divide-y divide-gray-100 dark:divide-gray-700/50">
+                    <template x-for="todo in todos" :key="todo.id">
+                      <li class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                        <input type="checkbox" :checked="todo.done" @change="todo.done = !todo.done"
+                               class="w-4 h-4 rounded border-gray-300 dark:border-gray-600 accent-[var(--color-primary)]">
+                        <span class="flex-1 text-sm" :class="todo.done ? 'line-through text-gray-400' : ''" x-text="todo.text"></span>
+                        <span class="inline-block w-2 h-2 rounded-full"
+                              :class="'bg-' + todo.color"></span>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+                <div class="card-footer">
+                  <div class="flex gap-2">
+                    <input type="text" placeholder="Add a new task..."
+                           class="flex-1 px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-transparent focus:border-primary focus:outline-none"
+                           @keydown.enter="if ($el.value.trim()) { todos.push({ id: Date.now(), text: $el.value.trim(), done: false, color: 'primary' }); $el.value = ''; }">
+                    <button class="px-3 py-1.5 text-sm bg-primary text-white rounded hover:bg-blue-700 transition-colors"
+                            @click="const input = $el.previousElementSibling; if (input.value.trim()) { todos.push({ id: Date.now(), text: input.value.trim(), done: false, color: 'primary' }); input.value = ''; }">
+                      <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline of Recent Activity -->
+            <div class="lg:col-span-4">
+              <div class="card" x-data="cardWidget">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i data-lucide="clock" class="inline w-4 h-4 mr-1"></i>
+                    Recent Activity
+                  </h3>
+                  <div class="card-tools">
+                    <button class="btn-tool" @click="toggleCollapse()">
+                      <i data-lucide="minus" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body" style="max-height: 460px; overflow-y: auto;">
+                  <ul class="timeline">
+                    <li class="time-label">
+                      <span>Today</span>
+                    </li>
+                    <li>
+                      <div class="timeline-item">
+                        <span class="timeline-icon bg-primary">
+                          <i data-lucide="mail" class="w-3 h-3"></i>
+                        </span>
+                        <div class="timeline-header">
+                          <a href="#">Sarah</a> sent you a message
+                          <span class="time"><i data-lucide="clock" class="inline w-3 h-3"></i> 12 mins ago</span>
+                        </div>
+                        <div class="timeline-body">
+                          Can you review the quarterly report before the meeting?
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-item">
+                        <span class="timeline-icon bg-success">
+                          <i data-lucide="check" class="w-3 h-3"></i>
+                        </span>
+                        <div class="timeline-header">
+                          Order <a href="#">#ORD-7841</a> completed
+                          <span class="time"><i data-lucide="clock" class="inline w-3 h-3"></i> 1 hr ago</span>
+                        </div>
+                        <div class="timeline-body">
+                          Payment of $2,499.00 has been confirmed.
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-item">
+                        <span class="timeline-icon bg-warning">
+                          <i data-lucide="alert-triangle" class="w-3 h-3"></i>
+                        </span>
+                        <div class="timeline-header">
+                          Server load warning
+                          <span class="time"><i data-lucide="clock" class="inline w-3 h-3"></i> 2 hrs ago</span>
+                        </div>
+                        <div class="timeline-body">
+                          CPU usage reached 89% on web-server-03. Auto-scaling triggered.
+                        </div>
+                      </div>
+                    </li>
+                    <li class="time-label">
+                      <span>Yesterday</span>
+                    </li>
+                    <li>
+                      <div class="timeline-item">
+                        <span class="timeline-icon bg-info">
+                          <i data-lucide="user-plus" class="w-3 h-3"></i>
+                        </span>
+                        <div class="timeline-header">
+                          5 new users registered
+                          <span class="time"><i data-lucide="clock" class="inline w-3 h-3"></i> Yesterday</span>
+                        </div>
+                        <div class="timeline-body">
+                          New signups from the social media campaign are performing well.
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-item">
+                        <span class="timeline-icon bg-danger">
+                          <i data-lucide="trash-2" class="w-3 h-3"></i>
+                        </span>
+                        <div class="timeline-header">
+                          Product <a href="#">SKU-4521</a> removed
+                          <span class="time"><i data-lucide="clock" class="inline w-3 h-3"></i> Yesterday</span>
+                        </div>
+                        <div class="timeline-body">
+                          Discontinued item removed from catalog by admin.
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Boxes at Bottom -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="info-box">
+              <span class="info-box-icon bg-info text-white">
+                <i data-lucide="cpu" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">CPU Usage</span>
+                <span class="info-box-number">42%</span>
+                <div class="progress progress-xs mt-1">
+                  <div class="progress-bar bg-info" style="width: 42%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-success text-white">
+                <i data-lucide="hard-drive" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Disk Usage</span>
+                <span class="info-box-number">68%</span>
+                <div class="progress progress-xs mt-1">
+                  <div class="progress-bar bg-success" style="width: 68%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-warning text-white">
+                <i data-lucide="memory-stick" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">RAM Usage</span>
+                <span class="info-box-number">73%</span>
+                <div class="progress progress-xs mt-1">
+                  <div class="progress-bar bg-warning" style="width: 73%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-danger text-white">
+                <i data-lucide="wifi" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Network I/O</span>
+                <span class="info-box-number">124 Mbps</span>
+                <div class="progress progress-xs mt-1">
+                  <div class="progress-bar bg-danger" style="width: 55%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts}}
+  <script type="module">
+    import { Chart, registerables } from 'chart.js';
+    Chart.register(...registerables);
+
+    const isDark = () => document.documentElement.classList.contains('dark');
+
+    const doughnutChart = new Chart(document.getElementById('doughnutChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Electronics', 'Clothing', 'Home & Garden', 'Sports', 'Other'],
+        datasets: [{
+          data: [35, 25, 20, 12, 8],
+          backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545', '#6c757d'],
+          borderColor: isDark() ? '#1e293b' : '#ffffff',
+          borderWidth: 3,
+          hoverOffset: 8,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: { legend: { display: false } },
+      },
+    });
+
+    new MutationObserver(() => {
+      doughnutChart.data.datasets[0].borderColor = isDark() ? '#1e293b' : '#ffffff';
+      doughnutChart.update('none');
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  </script>
+</body>
+</html>

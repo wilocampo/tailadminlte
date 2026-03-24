@@ -1,0 +1,106 @@
+{
+  "sections": [
+    {
+      "header": "MAIN NAVIGATION",
+      "items": [
+        {
+          "label": "Dashboard",
+          "icon": "gauge",
+          "children": [
+            { "label": "Dashboard v1", "href": "/pages/index.html", "activePage": "index" },
+            { "label": "Dashboard v2", "href": "/pages/index2.html", "activePage": "index2" },
+            { "label": "Dashboard v3", "href": "/pages/index3.html", "activePage": "index3" }
+          ]
+        },
+        {
+          "label": "Widgets",
+          "icon": "puzzle",
+          "children": [
+            { "label": "Small Box", "href": "/pages/widgets/small-box.html" },
+            { "label": "Info Box", "href": "/pages/widgets/info-box.html" },
+            { "label": "Cards", "href": "/pages/widgets/cards.html" }
+          ]
+        }
+      ]
+    },
+    {
+      "header": "LAYOUT OPTIONS",
+      "items": [
+        {
+          "label": "Layout Options",
+          "icon": "layout",
+          "children": [
+            { "label": "Fixed Sidebar", "href": "/pages/layout/fixed-sidebar.html", "activePage": "layout-fixed-sidebar" },
+            { "label": "Fixed Header", "href": "/pages/layout/fixed-header.html", "activePage": "layout-fixed-header" },
+            { "label": "Fixed Footer", "href": "/pages/layout/fixed-footer.html", "activePage": "layout-fixed-footer" },
+            { "label": "Sidebar Mini", "href": "/pages/layout/sidebar-mini.html", "activePage": "layout-sidebar-mini" },
+            { "label": "Collapsed Sidebar", "href": "/pages/layout/collapsed-sidebar.html", "activePage": "layout-collapsed-sidebar" },
+            { "label": "Logo Switch", "href": "/pages/layout/logo-switch.html", "activePage": "layout-logo-switch" }
+          ]
+        }
+      ]
+    },
+    {
+      "header": "COMPONENTS",
+      "items": [
+        {
+          "label": "UI Elements",
+          "icon": "palette",
+          "children": [
+            { "label": "General", "href": "/pages/UI/general.html", "activePage": "ui-general" },
+            { "label": "Icons", "href": "/pages/UI/icons.html", "activePage": "ui-icons" },
+            { "label": "Buttons", "href": "/pages/UI/buttons.html", "activePage": "ui-buttons" },
+            { "label": "Timeline", "href": "/pages/UI/timeline.html", "activePage": "ui-timeline" },
+            { "label": "Modals", "href": "/pages/UI/modals.html", "activePage": "ui-modals" }
+          ]
+        },
+        {
+          "label": "Forms",
+          "icon": "file-edit",
+          "children": [
+            { "label": "General Elements", "href": "/pages/forms/general.html", "activePage": "forms-general" },
+            { "label": "Validation", "href": "/pages/forms/validation.html", "activePage": "forms-validation" }
+          ]
+        },
+        {
+          "label": "Tables",
+          "icon": "table",
+          "children": [
+            { "label": "Simple Tables", "href": "/pages/tables/simple.html", "activePage": "tables-simple" },
+            { "label": "Data Tables", "href": "/pages/tables/data.html", "activePage": "tables-data" }
+          ]
+        }
+      ]
+    },
+    {
+      "header": "EXAMPLES",
+      "items": [
+        {
+          "label": "Charts",
+          "icon": "bar-chart-3",
+          "children": [
+            { "label": "ChartJS", "href": "/pages/charts/chartjs.html", "activePage": "charts-chartjs" },
+            { "label": "Inline Charts", "href": "/pages/charts/inline.html", "activePage": "charts-inline" }
+          ]
+        },
+        {
+          "label": "Pages",
+          "icon": "book-open",
+          "children": [
+            { "label": "Login", "href": "/pages/examples/login-v1.html" },
+            { "label": "Register", "href": "/pages/examples/register-v1.html" },
+            { "label": "Profile", "href": "/pages/examples/profile.html", "activePage": "examples-profile" },
+            { "label": "Invoice", "href": "/pages/examples/invoice.html", "activePage": "examples-invoice" },
+            { "label": "Gallery", "href": "/pages/examples/gallery.html", "activePage": "examples-gallery" },
+            { "label": "Search Results", "href": "/pages/examples/search.html", "activePage": "examples-search" },
+            { "label": "Projects", "href": "/pages/examples/projects.html", "activePage": "examples-projects" },
+            { "label": "Contacts", "href": "/pages/examples/contacts.html", "activePage": "examples-contacts" },
+            { "label": "E-Commerce", "href": "/pages/examples/e-commerce.html", "activePage": "examples-ecommerce" },
+            { "label": "404 Error", "href": "/pages/examples/404.html" },
+            { "label": "500 Error", "href": "/pages/examples/500.html" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<div class="card direct-chat {{#if variant}}direct-chat-{{variant}}{{/if}}" x-data="directChat">
+  <div class="card-header">
+    <h3 class="card-title">{{title}}</h3>
+    <div class="card-tools">
+      <span class="text-xs mr-2">{{#if badgeCount}}{{badgeCount}} Messages{{/if}}</span>
+      <button class="btn-tool" @click="toggleContacts()">
+        <i data-lucide="contact" class="w-4 h-4"></i>
+      </button>
+      <button class="btn-tool" @click="$el.closest('.card').querySelector('.direct-chat-messages').scrollTop = 99999">
+        <i data-lucide="minus" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="direct-chat-messages">
+      {{{messages}}}
+    </div>
+    <!-- Contacts pane (hidden by default, toggled by Alpine) -->
+    <div class="direct-chat-contacts">
+      <ul class="direct-chat-contacts-list">
+        {{{contacts}}}
+      </ul>
+    </div>
+  </div>
+  <div class="direct-chat-input-area">
+    <input type="text" placeholder="Type Message ...">
+    <button type="button">Send</button>
+  </div>
+</div>

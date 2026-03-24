@@ -1,0 +1,29 @@
+<div class="card {{#if cardClass}}{{cardClass}}{{/if}}" {{#if interactive}}x-data="cardWidget"{{/if}}>
+  <div class="card-header">
+    <h3 class="card-title">
+      {{#if icon}}<i data-lucide="{{icon}}" class="inline w-4 h-4 mr-1"></i>{{/if}}
+      {{title}}
+    </h3>
+    {{#if interactive}}
+    <div class="card-tools">
+      <button class="btn-tool" @click="toggleCollapse()">
+        <i data-lucide="minus" class="w-4 h-4"></i>
+      </button>
+      <button class="btn-tool" @click="toggleMaximize()">
+        <i data-lucide="expand" class="w-4 h-4"></i>
+      </button>
+      <button class="btn-tool" @click="remove()">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+    {{/if}}
+  </div>
+  <div class="card-body">
+    {{{body}}}
+  </div>
+  {{#if footer}}
+  <div class="card-footer">
+    {{{footer}}}
+  </div>
+  {{/if}}
+</div>

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Timeline" pathPrefix="../.."}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="ui-timeline"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Timeline"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+
+            <!-- Basic Timeline -->
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Basic Timeline</h3></div>
+              <div class="card-body">
+                <ul class="timeline">
+                  <!-- Time label -->
+                  <li class="time-label">
+                    <span>10 Feb. 2025</span>
+                  </li>
+
+                  <!-- Timeline item 1 -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-primary">
+                        <i data-lucide="mail" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Support Team</a> sent you an email
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>5 mins ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        Your request has been received and is being reviewed. Our team will get back to you within 24 hours.
+                      </div>
+                      <div class="timeline-footer">
+                        <a href="#" class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700">Read More</a>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Timeline item 2 -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-success">
+                        <i data-lucide="check" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">John Doe</a> completed a task
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>2 hours ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        The quarterly report has been finalized and submitted for review.
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Timeline item 3 -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-warning">
+                        <i data-lucide="alert-triangle" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        System generated a <a href="#">warning alert</a>
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>4 hours ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        Server load exceeded 80% threshold. Auto-scaling triggered to handle increased traffic.
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Time label -->
+                  <li class="time-label">
+                    <span>9 Feb. 2025</span>
+                  </li>
+
+                  <!-- Timeline item 4 -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-danger">
+                        <i data-lucide="x" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Admin</a> deleted a user account
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>1 day ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        User account "testuser42" was permanently removed from the system after inactivity period.
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Timeline item 5 -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-info">
+                        <i data-lucide="info" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">System</a> performed maintenance
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>1 day ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        Scheduled database optimization completed successfully. No downtime occurred.
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Timeline with Mixed Content -->
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Timeline with Mixed Content</h3></div>
+              <div class="card-body">
+                <ul class="timeline">
+                  <li class="time-label">
+                    <span>Today</span>
+                  </li>
+
+                  <!-- Item with image -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-primary">
+                        <i data-lucide="image" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Sarah</a> uploaded new photos
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>30 mins ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        <p class="mb-2">New product images for the spring catalog.</p>
+                        <div class="flex gap-2">
+                          <div class="w-16 h-16 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                            <i data-lucide="image" class="w-6 h-6 text-gray-400"></i>
+                          </div>
+                          <div class="w-16 h-16 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                            <i data-lucide="image" class="w-6 h-6 text-gray-400"></i>
+                          </div>
+                          <div class="w-16 h-16 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                            <i data-lucide="image" class="w-6 h-6 text-gray-400"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Item with badges -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-success">
+                        <i data-lucide="tag" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Project</a> tags updated
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>1 hour ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        <p class="mb-2">New labels assigned to Project Alpha:</p>
+                        <div class="flex flex-wrap gap-1">
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-600 text-white">Frontend</span>
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-600 text-white">In Progress</span>
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-500 text-gray-900">Priority</span>
+                          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-600 text-white">Urgent</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="time-label">
+                    <span>Yesterday</span>
+                  </li>
+
+                  <!-- Item with progress -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-info">
+                        <i data-lucide="bar-chart-3" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Sprint Review</a> completed
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>Yesterday</span>
+                      </div>
+                      <div class="timeline-body">
+                        <p class="mb-2">Sprint progress: 85% of planned stories completed.</p>
+                        <div class="progress progress-sm mb-2">
+                          <div class="progress-bar bg-success" style="width: 85%"></div>
+                        </div>
+                        <p class="text-xs text-gray-500">17 of 20 stories done</p>
+                      </div>
+                      <div class="timeline-footer">
+                        <a href="#" class="inline-flex items-center gap-1 px-3 py-1 bg-cyan-500 text-gray-900 text-xs rounded hover:bg-cyan-600">
+                          <i data-lucide="eye" class="w-3 h-3"></i> View Report
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Item with list -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-secondary">
+                        <i data-lucide="list" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Meeting Notes</a> shared
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>Yesterday</span>
+                      </div>
+                      <div class="timeline-body">
+                        <p class="mb-2 font-medium">Action items from team standup:</p>
+                        <ul class="list-disc list-inside text-xs space-y-1 text-gray-600 dark:text-gray-400">
+                          <li>Review pull requests by EOD</li>
+                          <li>Update deployment documentation</li>
+                          <li>Schedule client demo for next week</li>
+                          <li>Fix critical bug in authentication module</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- Item with comment thread -->
+                  <li>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-warning">
+                        <i data-lucide="message-circle" class="w-3 h-3"></i>
+                      </div>
+                      <div class="timeline-header">
+                        <a href="#">Discussion</a> on feature request
+                        <span class="time"><i data-lucide="clock" class="w-3 h-3 inline mr-1"></i>2 days ago</span>
+                      </div>
+                      <div class="timeline-body">
+                        <div class="space-y-2">
+                          <div class="flex items-start gap-2">
+                            <div class="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold shrink-0">J</div>
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded p-2 text-xs flex-1">
+                              <span class="font-semibold">John:</span> We should add dark mode support to the dashboard.
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-2">
+                            <div class="w-6 h-6 rounded-full bg-green-600 flex items-center justify-center text-white text-xs font-bold shrink-0">S</div>
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded p-2 text-xs flex-1">
+                              <span class="font-semibold">Sarah:</span> Agreed! I can start on the CSS variables this sprint.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="timeline-footer">
+                        <a href="#" class="inline-flex items-center gap-1 px-3 py-1 bg-yellow-500 text-gray-900 text-xs rounded hover:bg-yellow-600">
+                          <i data-lucide="message-circle" class="w-3 h-3"></i> Reply
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

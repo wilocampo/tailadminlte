@@ -1,0 +1,57 @@
+/* Info Box Widget */
+.info-box {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1rem;
+}
+
+.dark .info-box {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.info-box .info-box-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  min-height: 70px;
+  border-radius: 0.375rem;
+  font-size: 1.875rem;
+}
+
+.info-box .info-box-content {
+  flex: 1;
+  padding: 0.3125rem 0.625rem;
+}
+
+.info-box .info-box-text {
+  display: block;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-box .info-box-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.info-box .progress {
+  height: 2px;
+  margin: 0.3125rem 0;
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.info-box .progress-description {
+  font-size: 0.75rem;
+  margin: 0;
+}

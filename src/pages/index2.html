@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Dashboard v2"}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="index2"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Dashboard v2"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Revenue/Expense Overview Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div class="info-box">
+              <span class="info-box-icon bg-primary text-white">
+                <i data-lucide="dollar-sign" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Revenue</span>
+                <span class="info-box-number">$125,830</span>
+                <div class="progress progress-sm mt-2">
+                  <div class="progress-bar bg-primary" style="width: 72%"></div>
+                </div>
+                <span class="text-xs text-gray-500">72% of target</span>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-danger text-white">
+                <i data-lucide="credit-card" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Expenses</span>
+                <span class="info-box-number">$48,250</span>
+                <div class="progress progress-sm mt-2">
+                  <div class="progress-bar bg-danger" style="width: 38%"></div>
+                </div>
+                <span class="text-xs text-gray-500">38% of budget</span>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-success text-white">
+                <i data-lucide="trending-up" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Net Profit</span>
+                <span class="info-box-number">$77,580</span>
+                <div class="progress progress-sm mt-2">
+                  <div class="progress-bar bg-success" style="width: 61%"></div>
+                </div>
+                <span class="text-xs text-gray-500">61% margin</span>
+              </div>
+            </div>
+            <div class="info-box">
+              <span class="info-box-icon bg-warning text-white">
+                <i data-lucide="users" class="w-8 h-8"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">New Customers</span>
+                <span class="info-box-number">2,340</span>
+                <div class="progress progress-sm mt-2">
+                  <div class="progress-bar bg-warning" style="width: 85%"></div>
+                </div>
+                <span class="text-xs text-gray-500">85% growth</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row: Line + Bar side by side -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <!-- Revenue Line Chart -->
+            <div class="card" x-data="cardWidget">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i data-lucide="trending-up" class="inline w-4 h-4 mr-1"></i>
+                  Revenue Overview
+                </h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="toggleCollapse()">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                  </button>
+                  <button class="btn-tool" @click="toggleMaximize()">
+                    <i data-lucide="expand" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="relative" style="height: 300px;">
+                  <canvas id="revenueLineChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Monthly Bar Chart -->
+            <div class="card" x-data="cardWidget">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i data-lucide="bar-chart-3" class="inline w-4 h-4 mr-1"></i>
+                  Monthly Breakdown
+                </h3>
+                <div class="card-tools">
+                  <button class="btn-tool" @click="toggleCollapse()">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                  </button>
+                  <button class="btn-tool" @click="toggleMaximize()">
+                    <i data-lucide="expand" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="relative" style="height: 300px;">
+                  <canvas id="monthlyBarChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Row: Recent Orders + Progress -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+            <!-- Recent Orders Table -->
+            <div class="lg:col-span-8">
+              <div class="card" x-data="cardWidget">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i data-lucide="shopping-bag" class="inline w-4 h-4 mr-1"></i>
+                    Recent Orders
+                  </h3>
+                  <div class="card-tools">
+                    <button class="btn-tool" @click="toggleCollapse()">
+                      <i data-lucide="minus" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+                        <th class="text-left px-4 py-3 font-semibold">Order ID</th>
+                        <th class="text-left px-4 py-3 font-semibold">Customer</th>
+                        <th class="text-left px-4 py-3 font-semibold">Product</th>
+                        <th class="text-right px-4 py-3 font-semibold">Amount</th>
+                        <th class="text-center px-4 py-3 font-semibold">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                        <td class="px-4 py-3 font-mono text-xs">#ORD-7841</td>
+                        <td class="px-4 py-3">John Doe</td>
+                        <td class="px-4 py-3">MacBook Pro 16"</td>
+                        <td class="text-right px-4 py-3 font-semibold">$2,499.00</td>
+                        <td class="text-center px-4 py-3">
+                          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Completed</span>
+                        </td>
+                      </tr>
+                      <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                        <td class="px-4 py-3 font-mono text-xs">#ORD-7842</td>
+                        <td class="px-4 py-3">Jane Smith</td>
+                        <td class="px-4 py-3">iPhone 15 Pro</td>
+                        <td class="text-right px-4 py-3 font-semibold">$1,199.00</td>
+                        <td class="text-center px-4 py-3">
+                          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Processing</span>
+                        </td>
+                      </tr>
+                      <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                        <td class="px-4 py-3 font-mono text-xs">#ORD-7843</td>
+                        <td class="px-4 py-3">Bob Wilson</td>
+                        <td class="px-4 py-3">AirPods Max</td>
+                        <td class="text-right px-4 py-3 font-semibold">$549.00</td>
+                        <td class="text-center px-4 py-3">
+                          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Shipped</span>
+                        </td>
+                      </tr>
+                      <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                        <td class="px-4 py-3 font-mono text-xs">#ORD-7844</td>
+                        <td class="px-4 py-3">Alice Brown</td>
+                        <td class="px-4 py-3">iPad Air M2</td>
+                        <td class="text-right px-4 py-3 font-semibold">$799.00</td>
+                        <td class="text-center px-4 py-3">
+                          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Completed</span>
+                        </td>
+                      </tr>
+                      <tr class="border-b border-gray-100 dark:border-gray-700/50">
+                        <td class="px-4 py-3 font-mono text-xs">#ORD-7845</td>
+                        <td class="px-4 py-3">Charlie Davis</td>
+                        <td class="px-4 py-3">Apple Watch Ultra</td>
+                        <td class="text-right px-4 py-3 font-semibold">$799.00</td>
+                        <td class="text-center px-4 py-3">
+                          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Cancelled</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-4 py-3 font-mono text-xs">#ORD-7846</td>
+                        <td class="px-4 py-3">Diana Evans</td>
+                        <td class="px-4 py-3">Magic Keyboard</td>
+                        <td class="text-right px-4 py-3 font-semibold">$299.00</td>
+                        <td class="text-center px-4 py-3">
+                          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Processing</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer text-center">
+                  <a href="#" class="text-sm text-primary hover:underline">View All Orders</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress Indicators -->
+            <div class="lg:col-span-4">
+              <div class="card" x-data="cardWidget">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i data-lucide="target" class="inline w-4 h-4 mr-1"></i>
+                    Goal Completion
+                  </h3>
+                  <div class="card-tools">
+                    <button class="btn-tool" @click="toggleCollapse()">
+                      <i data-lucide="minus" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <!-- Sales Target -->
+                  <div class="mb-4">
+                    <div class="flex justify-between mb-1 text-sm">
+                      <span>Sales Target</span>
+                      <span class="font-semibold">72%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" style="width: 72%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Customer Acquisition -->
+                  <div class="mb-4">
+                    <div class="flex justify-between mb-1 text-sm">
+                      <span>Customer Acquisition</span>
+                      <span class="font-semibold">85%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 85%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Product Launches -->
+                  <div class="mb-4">
+                    <div class="flex justify-between mb-1 text-sm">
+                      <span>Product Launches</span>
+                      <span class="font-semibold">45%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 45%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Market Expansion -->
+                  <div class="mb-4">
+                    <div class="flex justify-between mb-1 text-sm">
+                      <span>Market Expansion</span>
+                      <span class="font-semibold">58%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 58%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Customer Retention -->
+                  <div class="mb-4">
+                    <div class="flex justify-between mb-1 text-sm">
+                      <span>Customer Retention</span>
+                      <span class="font-semibold">91%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 91%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Support Resolution -->
+                  <div>
+                    <div class="flex justify-between mb-1 text-sm">
+                      <span>Support Resolution</span>
+                      <span class="font-semibold">67%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" style="width: 67%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Stats Card -->
+              <div class="card" x-data="cardWidget">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i data-lucide="zap" class="inline w-4 h-4 mr-1"></i>
+                    Quick Stats
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <div class="flex items-center justify-between mb-3 pb-3 border-b border-gray-100 dark:border-gray-700/50">
+                    <span class="text-sm">Avg. Order Value</span>
+                    <span class="font-semibold text-primary">$85.40</span>
+                  </div>
+                  <div class="flex items-center justify-between mb-3 pb-3 border-b border-gray-100 dark:border-gray-700/50">
+                    <span class="text-sm">Conversion Rate</span>
+                    <span class="font-semibold text-success">3.8%</span>
+                  </div>
+                  <div class="flex items-center justify-between mb-3 pb-3 border-b border-gray-100 dark:border-gray-700/50">
+                    <span class="text-sm">Cart Abandonment</span>
+                    <span class="font-semibold text-danger">24.5%</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">Return Rate</span>
+                    <span class="font-semibold text-warning">5.2%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts}}
+  <script type="module">
+    import { Chart, registerables } from 'chart.js';
+    Chart.register(...registerables);
+
+    function themeColors() {
+      const d = document.documentElement.classList.contains('dark');
+      return { grid: d ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', text: d ? '#e2e8f0' : '#6b7280' };
+    }
+    const charts = [];
+    let tc = themeColors();
+
+    charts.push(new Chart(document.getElementById('revenueLineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [
+            {
+              label: 'Revenue',
+              data: [8200, 9400, 7800, 11200, 10600, 13500, 12100, 15800, 14200, 16900, 15400, 18230],
+              borderColor: '#0d6efd',
+              backgroundColor: 'rgba(13, 110, 253, 0.15)',
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointHoverRadius: 7,
+              pointBackgroundColor: '#0d6efd',
+            },
+            {
+              label: 'Expenses',
+              data: [4100, 4800, 3900, 5200, 4900, 6100, 5500, 7200, 6400, 7800, 7100, 8400],
+              borderColor: '#dc3545',
+              backgroundColor: 'rgba(220, 53, 69, 0.1)',
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointHoverRadius: 7,
+              pointBackgroundColor: '#dc3545',
+            },
+            {
+              label: 'Profit',
+              data: [4100, 4600, 3900, 6000, 5700, 7400, 6600, 8600, 7800, 9100, 8300, 9830],
+              borderColor: '#198754',
+              borderDash: [5, 5],
+              backgroundColor: 'transparent',
+              fill: false,
+              tension: 0.4,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              pointBackgroundColor: '#198754',
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: tc.text, usePointStyle: true } },
+          },
+          scales: {
+            x: { grid: { color: tc.grid }, ticks: { color: tc.text } },
+            y: { grid: { color: tc.grid }, ticks: { color: tc.text, callback: v => '$' + (v / 1000) + 'k' } },
+          },
+        },
+      }));
+
+    charts.push(new Chart(document.getElementById('monthlyBarChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [
+            {
+              label: 'Online Sales',
+              data: [4200, 5100, 3900, 6200, 5800, 7500, 6800, 8900, 7600, 9400, 8200, 10100],
+              backgroundColor: '#0d6efd',
+              borderRadius: 4,
+            },
+            {
+              label: 'In-Store Sales',
+              data: [2800, 3200, 2700, 3800, 3500, 4200, 3900, 5100, 4400, 5300, 4800, 5900],
+              backgroundColor: '#0dcaf0',
+              borderRadius: 4,
+            },
+            {
+              label: 'Returns',
+              data: [800, 900, 800, 800, 700, 1200, 600, 1200, 800, 1800, 1600, 1770],
+              backgroundColor: '#dc3545',
+              borderRadius: 4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: tc.text, usePointStyle: true } },
+          },
+          scales: {
+            x: { grid: { color: tc.grid }, ticks: { color: tc.text } },
+            y: { grid: { color: tc.grid }, ticks: { color: tc.text, callback: v => '$' + (v / 1000) + 'k' } },
+          },
+        },
+      }));
+
+    new MutationObserver(() => {
+      tc = themeColors();
+      charts.forEach(c => {
+        if (c.options.scales?.x) { c.options.scales.x.grid.color = tc.grid; c.options.scales.x.ticks.color = tc.text; }
+        if (c.options.scales?.y) { c.options.scales.y.grid.color = tc.grid; c.options.scales.y.ticks.color = tc.text; }
+        if (c.options.plugins?.legend?.labels) c.options.plugins.legend.labels.color = tc.text;
+        c.update('none');
+      });
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  </script>
+</body>
+</html>

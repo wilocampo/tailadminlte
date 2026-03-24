@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Login" pathPrefix="../.."}}
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  {{> ui/dark-mode-toggle}}
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-card-body">
+
+        <!-- Logo -->
+        <div class="auth-logo">
+          <a href="/pages/index.html"><span>Tail</span>AdminLTE</a>
+          <p>Sign in to start your session</p>
+        </div>
+
+        <!-- Login Form -->
+        <form>
+          <div class="auth-input-group">
+            <input type="email" placeholder="Email" autocomplete="email">
+            <span class="auth-input-icon">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </span>
+          </div>
+
+          <div class="auth-input-group">
+            <input type="password" placeholder="Password" autocomplete="current-password">
+            <span class="auth-input-icon">
+              <i data-lucide="lock" class="w-4 h-4"></i>
+            </span>
+          </div>
+
+          <div class="auth-remember-row">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+            <button type="submit" class="auth-btn auth-btn-primary" style="width:auto;">
+              Sign In <i data-lucide="log-in" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </form>
+
+        <!-- Social Login -->
+        <div class="auth-divider">OR</div>
+
+        <div class="auth-social-buttons">
+          <a href="#" class="auth-social-btn btn-facebook" title="Sign in with Facebook">f</a>
+          <a href="#" class="auth-social-btn btn-google" title="Sign in with Google">G+</a>
+          <a href="#" class="auth-social-btn btn-github" title="Sign in with GitHub">
+            <i data-lucide="github" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Links -->
+        <div class="auth-links">
+          <p><a href="#">I forgot my password</a></p>
+          <p><a href="/pages/examples/register-v1.html">Register a new membership</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

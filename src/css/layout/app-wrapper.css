@@ -1,0 +1,44 @@
+/* Core Layout - CSS Grid */
+.app-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "app-sidebar app-header"
+    "app-sidebar app-main"
+    "app-sidebar app-footer";
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-columns: auto 1fr;
+  gap: 0;
+  align-content: stretch;
+  align-items: stretch;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+.app-wrapper > * {
+  min-width: 0;
+}
+
+/* Prevent transitions on page load */
+body:not(.app-loaded) {
+  .app-header,
+  .app-sidebar,
+  .app-main,
+  .app-footer {
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
+}
+
+/* Prevent transitions during window resize */
+.hold-transition {
+  .app-header,
+  .app-sidebar,
+  .app-main,
+  .app-footer,
+  .nav-arrow,
+  .nav-badge {
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
+}

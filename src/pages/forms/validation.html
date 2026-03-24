@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Form Validation" pathPrefix="../.."}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="forms-validation"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Form Validation"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- HTML5 Validation -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">HTML5 Built-in Validation</h3></div>
+              <div class="card-body">
+                <form novalidate x-data="{ submitted: false }" @submit.prevent="submitted = true; if ($el.checkValidity()) alert('Form is valid!')">
+                  <div class="mb-4">
+                    <label for="h5Name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" id="h5Name" required minlength="2" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200 invalid:[&:not(:placeholder-shown)]:border-danger invalid:[&:not(:placeholder-shown)]:focus:ring-danger valid:[&:not(:placeholder-shown)]:border-success valid:[&:not(:placeholder-shown)]:focus:ring-success" placeholder="Enter your name">
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Minimum 2 characters required</p>
+                  </div>
+                  <div class="mb-4">
+                    <label for="h5Email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email <span class="text-danger">*</span></label>
+                    <input type="email" id="h5Email" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200 invalid:[&:not(:placeholder-shown)]:border-danger invalid:[&:not(:placeholder-shown)]:focus:ring-danger valid:[&:not(:placeholder-shown)]:border-success valid:[&:not(:placeholder-shown)]:focus:ring-success" placeholder="user@example.com">
+                  </div>
+                  <div class="mb-4">
+                    <label for="h5Phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label>
+                    <input type="tel" id="h5Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200 invalid:[&:not(:placeholder-shown)]:border-danger valid:[&:not(:placeholder-shown)]:border-success" placeholder="123-456-7890">
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Format: 123-456-7890</p>
+                  </div>
+                  <div class="mb-4">
+                    <label for="h5Url" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Website</label>
+                    <input type="url" id="h5Url" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200 invalid:[&:not(:placeholder-shown)]:border-danger valid:[&:not(:placeholder-shown)]:border-success" placeholder="https://example.com">
+                  </div>
+                  <button type="submit" class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">Submit</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Validation States -->
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Validation States</h3></div>
+              <div class="card-body space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Valid Input</label>
+                  <input type="text" value="Correct value" class="w-full px-3 py-2 border border-success rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-success dark:text-gray-200">
+                  <p class="mt-1 text-xs text-success flex items-center gap-1">
+                    <i data-lucide="check-circle" class="w-3 h-3"></i> Looks good!
+                  </p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Invalid Input</label>
+                  <input type="text" value="Wrong" class="w-full px-3 py-2 border border-danger rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-danger dark:text-gray-200">
+                  <p class="mt-1 text-xs text-danger flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3 h-3"></i> Please enter at least 5 characters.
+                  </p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Warning Input</label>
+                  <input type="text" value="Maybe" class="w-full px-3 py-2 border border-warning rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-warning dark:text-gray-200">
+                  <p class="mt-1 text-xs text-warning flex items-center gap-1">
+                    <i data-lucide="alert-triangle" class="w-3 h-3"></i> This value could cause issues.
+                  </p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Valid Select</label>
+                  <select class="w-full px-3 py-2 border border-success rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-success dark:text-gray-200">
+                    <option value="1" selected>Valid option selected</option>
+                  </select>
+                  <p class="mt-1 text-xs text-success flex items-center gap-1">
+                    <i data-lucide="check-circle" class="w-3 h-3"></i> Great choice!
+                  </p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Invalid Textarea</label>
+                  <textarea rows="2" class="w-full px-3 py-2 border border-danger rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-danger dark:text-gray-200 resize-y"></textarea>
+                  <p class="mt-1 text-xs text-danger flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3 h-3"></i> This field is required.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alpine.js Custom Validation -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Real-time Validation (Alpine.js)</h3></div>
+              <div class="card-body">
+                <form x-data="{
+                  username: '',
+                  email: '',
+                  password: '',
+                  usernameTouched: false,
+                  emailTouched: false,
+                  passwordTouched: false,
+                  get usernameValid() { return this.username.length >= 3 },
+                  get usernameError() { if (!this.usernameTouched || this.username === '') return ''; return this.usernameValid ? '' : 'Username must be at least 3 characters' },
+                  get emailValid() { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email) },
+                  get emailError() { if (!this.emailTouched || this.email === '') return ''; return this.emailValid ? '' : 'Please enter a valid email address' },
+                  get passwordValid() { return this.password.length >= 8 },
+                  get passwordStrength() {
+                    if (this.password.length === 0) return '';
+                    if (this.password.length < 6) return 'weak';
+                    if (this.password.length < 10 && /[A-Z]/.test(this.password) && /[0-9]/.test(this.password)) return 'medium';
+                    if (this.password.length >= 10 && /[A-Z]/.test(this.password) && /[0-9]/.test(this.password) && /[^A-Za-z0-9]/.test(this.password)) return 'strong';
+                    return 'medium';
+                  },
+                  get passwordError() { if (!this.passwordTouched || this.password === '') return ''; return this.passwordValid ? '' : 'Password must be at least 8 characters' }
+                }" @submit.prevent="alert('Form submitted!')">
+                  <div class="mb-4">
+                    <label for="rtUsername" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Username</label>
+                    <input type="text" id="rtUsername" x-model="username" @blur="usernameTouched = true" @input="usernameTouched = true" :class="{ 'border-success focus:ring-success': usernameTouched && usernameValid, 'border-danger focus:ring-danger': usernameError }" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="Enter username">
+                    <p x-show="usernameError" x-text="usernameError" class="mt-1 text-xs text-danger"></p>
+                    <p x-show="usernameTouched && usernameValid" class="mt-1 text-xs text-success">Username is available!</p>
+                  </div>
+                  <div class="mb-4">
+                    <label for="rtEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                    <input type="email" id="rtEmail" x-model="email" @blur="emailTouched = true" @input="emailTouched = true" :class="{ 'border-success focus:ring-success': emailTouched && emailValid, 'border-danger focus:ring-danger': emailError }" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="Enter email">
+                    <p x-show="emailError" x-text="emailError" class="mt-1 text-xs text-danger"></p>
+                    <p x-show="emailTouched && emailValid" class="mt-1 text-xs text-success">Valid email format!</p>
+                  </div>
+                  <div class="mb-4">
+                    <label for="rtPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+                    <input type="password" id="rtPassword" x-model="password" @blur="passwordTouched = true" @input="passwordTouched = true" :class="{ 'border-success focus:ring-success': passwordTouched && passwordValid, 'border-danger focus:ring-danger': passwordError }" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="Enter password">
+                    <p x-show="passwordError" x-text="passwordError" class="mt-1 text-xs text-danger"></p>
+                    <!-- Password strength indicator -->
+                    <div x-show="password.length > 0" class="mt-2">
+                      <div class="flex gap-1 mb-1">
+                        <div class="h-1 flex-1 rounded-full" :class="passwordStrength === 'weak' ? 'bg-danger' : passwordStrength === 'medium' ? 'bg-warning' : passwordStrength === 'strong' ? 'bg-success' : 'bg-gray-200 dark:bg-gray-600'"></div>
+                        <div class="h-1 flex-1 rounded-full" :class="passwordStrength === 'medium' ? 'bg-warning' : passwordStrength === 'strong' ? 'bg-success' : 'bg-gray-200 dark:bg-gray-600'"></div>
+                        <div class="h-1 flex-1 rounded-full" :class="passwordStrength === 'strong' ? 'bg-success' : 'bg-gray-200 dark:bg-gray-600'"></div>
+                      </div>
+                      <p class="text-xs" :class="{ 'text-danger': passwordStrength === 'weak', 'text-warning': passwordStrength === 'medium', 'text-success': passwordStrength === 'strong' }" x-text="passwordStrength ? passwordStrength.charAt(0).toUpperCase() + passwordStrength.slice(1) + ' password' : ''"></p>
+                    </div>
+                  </div>
+                  <button type="submit" :disabled="!(usernameValid && emailValid && passwordValid)" :class="usernameValid && emailValid && passwordValid ? 'bg-primary hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'" class="px-4 py-2 text-white text-sm font-medium rounded-md transition-colors">Submit</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Complete Validated Form -->
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Complete Registration Form</h3></div>
+              <div class="card-body">
+                <form x-data="{
+                  form: { firstName: '', lastName: '', email: '', phone: '', city: '', state: '', zip: '', agree: false },
+                  errors: {},
+                  submitted: false,
+                  validate() {
+                    this.errors = {};
+                    if (!this.form.firstName.trim()) this.errors.firstName = 'First name is required';
+                    if (!this.form.lastName.trim()) this.errors.lastName = 'Last name is required';
+                    if (!this.form.email.trim()) this.errors.email = 'Email is required';
+                    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) this.errors.email = 'Invalid email';
+                    if (!this.form.city.trim()) this.errors.city = 'City is required';
+                    if (!this.form.state) this.errors.state = 'Please select a state';
+                    if (!this.form.zip.trim()) this.errors.zip = 'Zip is required';
+                    else if (!/^\d{5}$/.test(this.form.zip)) this.errors.zip = 'Must be 5 digits';
+                    if (!this.form.agree) this.errors.agree = 'You must agree to the terms';
+                    return Object.keys(this.errors).length === 0;
+                  },
+                  submit() {
+                    this.submitted = true;
+                    if (this.validate()) alert('Registration successful!');
+                  }
+                }" @submit.prevent="submit()">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">First Name <span class="text-danger">*</span></label>
+                      <input type="text" x-model="form.firstName" :class="submitted && errors.firstName ? 'border-danger focus:ring-danger' : submitted && !errors.firstName ? 'border-success focus:ring-success' : ''" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="John">
+                      <p x-show="submitted && errors.firstName" x-text="errors.firstName" class="mt-1 text-xs text-danger"></p>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Last Name <span class="text-danger">*</span></label>
+                      <input type="text" x-model="form.lastName" :class="submitted && errors.lastName ? 'border-danger focus:ring-danger' : submitted && !errors.lastName ? 'border-success focus:ring-success' : ''" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="Doe">
+                      <p x-show="submitted && errors.lastName" x-text="errors.lastName" class="mt-1 text-xs text-danger"></p>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email <span class="text-danger">*</span></label>
+                    <input type="email" x-model="form.email" :class="submitted && errors.email ? 'border-danger focus:ring-danger' : submitted && !errors.email ? 'border-success focus:ring-success' : ''" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="john@example.com">
+                    <p x-show="submitted && errors.email" x-text="errors.email" class="mt-1 text-xs text-danger"></p>
+                  </div>
+                  <div class="mb-3">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label>
+                    <input type="tel" x-model="form.phone" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="123-456-7890">
+                  </div>
+                  <div class="grid grid-cols-6 gap-3 mb-3">
+                    <div class="col-span-3">
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">City <span class="text-danger">*</span></label>
+                      <input type="text" x-model="form.city" :class="submitted && errors.city ? 'border-danger focus:ring-danger' : submitted && !errors.city ? 'border-success focus:ring-success' : ''" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="New York">
+                      <p x-show="submitted && errors.city" x-text="errors.city" class="mt-1 text-xs text-danger"></p>
+                    </div>
+                    <div class="col-span-2">
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">State <span class="text-danger">*</span></label>
+                      <select x-model="form.state" :class="submitted && errors.state ? 'border-danger focus:ring-danger' : submitted && !errors.state ? 'border-success focus:ring-success' : ''" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200">
+                        <option value="">Choose...</option>
+                        <option value="CA">California</option>
+                        <option value="NY">New York</option>
+                        <option value="TX">Texas</option>
+                        <option value="FL">Florida</option>
+                      </select>
+                      <p x-show="submitted && errors.state" x-text="errors.state" class="mt-1 text-xs text-danger"></p>
+                    </div>
+                    <div class="col-span-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Zip <span class="text-danger">*</span></label>
+                      <input type="text" x-model="form.zip" :class="submitted && errors.zip ? 'border-danger focus:ring-danger' : submitted && !errors.zip ? 'border-success focus:ring-success' : ''" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary dark:text-gray-200" placeholder="10001">
+                      <p x-show="submitted && errors.zip" x-text="errors.zip" class="mt-1 text-xs text-danger"></p>
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                      <input type="checkbox" x-model="form.agree" class="w-4 h-4 accent-primary rounded border-gray-300"> I agree to the <a href="#" class="text-primary hover:underline">terms and conditions</a>
+                    </label>
+                    <p x-show="submitted && errors.agree" x-text="errors.agree" class="mt-1 text-xs text-danger"></p>
+                  </div>
+                  <button type="submit" class="px-4 py-2 bg-success text-white text-sm font-medium rounded-md hover:bg-green-700 transition-colors">Register</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

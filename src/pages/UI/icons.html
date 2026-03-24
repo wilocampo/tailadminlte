@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Icons" pathPrefix="../.."}}
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="ui-icons"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Icons"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <!-- Icon Search -->
+          <div class="card mb-6" x-data="{ search: '' }">
+            <div class="card-header">
+              <h3 class="card-title">Lucide Icons</h3>
+              <div class="card-tools">
+                <div class="relative">
+                  <input type="text" x-model="search" placeholder="Search icons..." class="px-3 py-1.5 text-sm border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 w-48">
+                  <i data-lucide="search" class="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-3">
+                <!-- Each icon is a static element with Alpine show/hide based on search -->
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'activity'.includes(search.toLowerCase()) || search === ''" data-icon-name="activity">
+                  <i data-lucide="activity" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">activity</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'alert-circle'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="alert-circle" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">alert-circle</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'alert-triangle'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="alert-triangle" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">alert-triangle</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'archive'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="archive" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">archive</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'arrow-down'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="arrow-down" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">arrow-down</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'arrow-left'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="arrow-left" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">arrow-left</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'arrow-right'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="arrow-right" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">arrow-right</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'arrow-up'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="arrow-up" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">arrow-up</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'bar-chart-3'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="bar-chart-3" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">bar-chart-3</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'bell'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="bell" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">bell</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'bookmark'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="bookmark" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">bookmark</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'calendar'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="calendar" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">calendar</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'camera'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="camera" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">camera</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'check'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="check" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">check</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'check-circle'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="check-circle" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">check-circle</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'chevron-down'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="chevron-down" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">chevron-down</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'chevron-right'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="chevron-right" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">chevron-right</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'circle'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="circle" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">circle</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'clipboard'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="clipboard" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">clipboard</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'clock'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="clock" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">clock</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'cloud'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="cloud" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">cloud</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'code'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="code" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">code</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'copy'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="copy" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">copy</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'credit-card'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="credit-card" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">credit-card</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'database'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="database" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">database</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'download'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="download" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">download</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'edit'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="edit" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">edit</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'expand'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="expand" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">expand</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'eye'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="eye" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">eye</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'eye-off'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="eye-off" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">eye-off</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'file'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="file" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">file</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'file-text'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="file-text" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">file-text</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'filter'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="filter" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">filter</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'folder'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="folder" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">folder</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'gauge'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="gauge" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">gauge</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'globe'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="globe" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">globe</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'grid'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="grid-3x3" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">grid</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'hash'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="hash" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">hash</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'heart'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="heart" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">heart</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'home'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="home" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">home</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'image'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="image" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">image</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'inbox'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="inbox" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">inbox</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'info'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="info" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">info</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'key'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="key" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">key</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'layers'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="layers" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">layers</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'layout'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="layout" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">layout</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'link'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="link" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">link</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'list'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="list" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">list</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'loader-2'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="loader-2" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">loader-2</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'lock'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="lock" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">lock</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'log-out'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="log-out" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">log-out</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'mail'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="mail" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">mail</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'map'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="map" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">map</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'map-pin'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="map-pin" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">map-pin</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'menu'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="menu" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">menu</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'message-circle'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="message-circle" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">message-circle</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'minus'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="minus" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">minus</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'monitor'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="monitor" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">monitor</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'moon'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="moon" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">moon</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'more-horizontal'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="more-horizontal" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">more-horizontal</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'more-vertical'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="more-vertical" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">more-vertical</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'package'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="package" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">package</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'palette'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="palette" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">palette</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'phone'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="phone" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">phone</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'pie-chart'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="pie-chart" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">pie-chart</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'plus'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="plus" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">plus</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'power'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="power" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">power</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'printer'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="printer" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">printer</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'puzzle'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="puzzle" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">puzzle</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'refresh-cw'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="refresh-cw" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">refresh-cw</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'save'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="save" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">save</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'search'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="search" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">search</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'settings'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="settings" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">settings</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'share'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="share" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">share</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'shield'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="shield" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">shield</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'shopping-cart'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="shopping-cart" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">shopping-cart</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'star'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="star" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">star</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'sun'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="sun" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">sun</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'table'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="table" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">table</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'tag'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="tag" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">tag</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'trash'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="trash" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">trash</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'trending-up'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="trending-up" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">trending-up</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'trending-down'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="trending-down" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">trending-down</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'upload'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="upload" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">upload</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'user'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="user" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">user</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'users'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="users" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">users</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'x'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="x" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">x</p>
+                </div>
+                <div class="text-center p-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" x-show="'zap'.includes(search.toLowerCase()) || search === ''">
+                  <i data-lucide="zap" class="w-6 h-6 mx-auto mb-1"></i>
+                  <p class="text-xs truncate">zap</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Icon Sizes -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Icon Sizes</h3></div>
+              <div class="card-body">
+                <div class="flex items-end gap-6">
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-4 h-4 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-4 h-4</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-5 h-5 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-5 h-5</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-6 h-6 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-6 h-6</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-8 h-8 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-8 h-8</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-10 h-10 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-10 h-10</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-12 h-12 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-12 h-12</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="home" class="w-16 h-16 mx-auto mb-1"></i>
+                    <p class="text-xs text-gray-500">w-16 h-16</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Icon Colors</h3></div>
+              <div class="card-body">
+                <div class="flex flex-wrap items-center gap-6">
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-blue-600"></i>
+                    <p class="text-xs text-gray-500">Primary</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-gray-600"></i>
+                    <p class="text-xs text-gray-500">Secondary</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-green-600"></i>
+                    <p class="text-xs text-gray-500">Success</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-red-600"></i>
+                    <p class="text-xs text-gray-500">Danger</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-yellow-500"></i>
+                    <p class="text-xs text-gray-500">Warning</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-cyan-500"></i>
+                    <p class="text-xs text-gray-500">Info</p>
+                  </div>
+                  <div class="text-center">
+                    <i data-lucide="heart" class="w-8 h-8 mx-auto mb-1 text-gray-900 dark:text-white"></i>
+                    <p class="text-xs text-gray-500">Dark</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

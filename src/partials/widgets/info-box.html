@@ -1,0 +1,15 @@
+<div class="info-box">
+  <span class="info-box-icon {{iconBg}} text-white">
+    <i data-lucide="{{icon}}" class="w-8 h-8"></i>
+  </span>
+  <div class="info-box-content">
+    <span class="info-box-text">{{label}}</span>
+    <span class="info-box-number">{{value}}</span>
+    {{#if progressValue}}
+    <div class="progress">
+      <div class="progress-bar {{#if progressColor}}{{progressColor}}{{else}}bg-primary{{/if}}" style="width: {{progressValue}}%"></div>
+    </div>
+    <span class="progress-description">{{progressDescription}}</span>
+    {{/if}}
+  </div>
+</div>

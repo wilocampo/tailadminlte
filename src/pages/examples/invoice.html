@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head title="TailAdminLTE | Invoice" pathPrefix="../.."}}
+  <style>
+    @media print {
+      .app-sidebar, .app-header, .app-content-header, .app-footer, .sidebar-overlay, .no-print { display: none !important; }
+      .app-main { margin-left: 0 !important; padding: 0 !important; }
+      .app-content { padding: 0 !important; }
+      body { background: white !important; color: black !important; }
+      .card { box-shadow: none !important; border: none !important; }
+    }
+  </style>
+</head>
+<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-open bg-gray-100 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-200" x-data>
+  <div class="app-wrapper">
+    {{> header/navbar}}
+    {{> sidebar/sidebar activePage="examples-invoice"}}
+    <main class="app-main">
+      {{> content/content-header pageTitle="Invoice"}}
+      <div class="app-content">
+        <div class="w-full px-4">
+
+          <div class="card mb-6">
+            <div class="card-body">
+
+              <!-- Invoice Header -->
+              <div class="flex flex-col sm:flex-row justify-between items-start mb-8">
+                <div>
+                  <div class="flex items-center gap-3 mb-2">
+                    <img src="/assets/img/AdminLTELogo.png" alt="Logo" class="w-10 h-10">
+                    <h2 class="text-2xl font-bold">TailAdmin<span class="font-normal">LTE</span></h2>
+                  </div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Premium Admin Dashboard</p>
+                </div>
+                <div class="text-right mt-4 sm:mt-0">
+                  <h3 class="text-xl font-bold text-gray-400 uppercase">Invoice</h3>
+                  <p class="text-sm font-semibold">#INV-2026-0047</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Date: March 15, 2026</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Due Date: April 15, 2026</p>
+                </div>
+              </div>
+
+              <!-- From / To -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">From</h4>
+                  <p class="font-semibold">TailAdminLTE Inc.</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    795 Folsom Ave, Suite 600<br>
+                    San Francisco, CA 94107<br>
+                    Phone: (804) 123-5432<br>
+                    Email: billing@tailadminlte.com
+                  </p>
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">To</h4>
+                  <p class="font-semibold">John Doe</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    455 Foggy Heights<br>
+                    AZ 85004, US<br>
+                    Phone: (602) 519-0450<br>
+                    Email: john.doe@example.com
+                  </p>
+                </div>
+              </div>
+
+              <!-- Line Items Table -->
+              <div class="overflow-x-auto mb-8">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                      <th class="py-3 px-4 text-left font-semibold text-gray-500 dark:text-gray-400">#</th>
+                      <th class="py-3 px-4 text-left font-semibold text-gray-500 dark:text-gray-400">Product</th>
+                      <th class="py-3 px-4 text-left font-semibold text-gray-500 dark:text-gray-400">Description</th>
+                      <th class="py-3 px-4 text-right font-semibold text-gray-500 dark:text-gray-400">Qty</th>
+                      <th class="py-3 px-4 text-right font-semibold text-gray-500 dark:text-gray-400">Unit Price</th>
+                      <th class="py-3 px-4 text-right font-semibold text-gray-500 dark:text-gray-400">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b border-gray-100 dark:border-gray-800">
+                      <td class="py-3 px-4">1</td>
+                      <td class="py-3 px-4 font-medium">TailAdminLTE Pro License</td>
+                      <td class="py-3 px-4 text-gray-500 dark:text-gray-400">Single developer license with 1 year of updates</td>
+                      <td class="py-3 px-4 text-right">2</td>
+                      <td class="py-3 px-4 text-right">$59.00</td>
+                      <td class="py-3 px-4 text-right font-medium">$118.00</td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-gray-800">
+                      <td class="py-3 px-4">2</td>
+                      <td class="py-3 px-4 font-medium">Extended Support</td>
+                      <td class="py-3 px-4 text-gray-500 dark:text-gray-400">Priority email & chat support for 12 months</td>
+                      <td class="py-3 px-4 text-right">1</td>
+                      <td class="py-3 px-4 text-right">$29.00</td>
+                      <td class="py-3 px-4 text-right font-medium">$29.00</td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-gray-800">
+                      <td class="py-3 px-4">3</td>
+                      <td class="py-3 px-4 font-medium">Custom Theme Design</td>
+                      <td class="py-3 px-4 text-gray-500 dark:text-gray-400">Custom branded color scheme and logo integration</td>
+                      <td class="py-3 px-4 text-right">1</td>
+                      <td class="py-3 px-4 text-right">$199.00</td>
+                      <td class="py-3 px-4 text-right font-medium">$199.00</td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-gray-800">
+                      <td class="py-3 px-4">4</td>
+                      <td class="py-3 px-4 font-medium">Component Library Add-on</td>
+                      <td class="py-3 px-4 text-gray-500 dark:text-gray-400">50+ additional UI components pack</td>
+                      <td class="py-3 px-4 text-right">1</td>
+                      <td class="py-3 px-4 text-right">$39.00</td>
+                      <td class="py-3 px-4 text-right font-medium">$39.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Totals -->
+              <div class="flex flex-col sm:flex-row justify-between gap-8">
+                <!-- Payment Methods -->
+                <div class="flex-1">
+                  <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Payment Methods</h4>
+                  <div class="flex gap-3 text-gray-400">
+                    <div class="flex items-center gap-1 text-sm">
+                      <i data-lucide="credit-card" class="w-5 h-5"></i>
+                      <span>Visa</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm">
+                      <i data-lucide="credit-card" class="w-5 h-5"></i>
+                      <span>Mastercard</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm">
+                      <i data-lucide="wallet" class="w-5 h-5"></i>
+                      <span>PayPal</span>
+                    </div>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-2">Payment is due within 30 days. Late payment may incur additional charges.</p>
+                </div>
+
+                <!-- Totals Table -->
+                <div class="w-full sm:w-72">
+                  <table class="w-full text-sm">
+                    <tr>
+                      <td class="py-1.5 text-gray-500 dark:text-gray-400">Subtotal</td>
+                      <td class="py-1.5 text-right font-medium">$385.00</td>
+                    </tr>
+                    <tr>
+                      <td class="py-1.5 text-gray-500 dark:text-gray-400">Tax (8%)</td>
+                      <td class="py-1.5 text-right font-medium">$30.80</td>
+                    </tr>
+                    <tr>
+                      <td class="py-1.5 text-gray-500 dark:text-gray-400">Shipping</td>
+                      <td class="py-1.5 text-right font-medium">$0.00</td>
+                    </tr>
+                    <tr class="border-t border-gray-200 dark:border-gray-700">
+                      <td class="py-2 font-bold text-base">Total</td>
+                      <td class="py-2 text-right font-bold text-base text-blue-600">$415.80</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex justify-end gap-2 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 no-print">
+                <button onclick="window.print()" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-sm rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition inline-flex items-center gap-1">
+                  <i data-lucide="printer" class="w-4 h-4"></i> Print
+                </button>
+                <button class="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition inline-flex items-center gap-1">
+                  <i data-lucide="download" class="w-4 h-4"></i> Download PDF
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    {{> footer/footer}}
+  </div>
+  {{> scripts pathPrefix="../.."}}
+</body>
+</html>

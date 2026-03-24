@@ -1,0 +1,9 @@
+<!-- Floating dark mode toggle for standalone pages (no navbar) -->
+<div class="fixed top-4 right-4 z-50" x-data="{ get mode() { return $store.darkMode.mode } }">
+  <button @click="$store.darkMode.toggle()" title="Toggle dark mode"
+    class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+    <i x-show="mode === 'light'" data-lucide="sun" class="w-5 h-5"></i>
+    <i x-show="mode === 'dark'" data-lucide="moon" class="w-5 h-5"></i>
+    <i x-show="mode === 'auto'" data-lucide="monitor" class="w-5 h-5"></i>
+  </button>
+</div>
